@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Layerwise AI</title>
+<meta name="description" content="Layerwise adds a safe AI layer to the systems UAE companies already run: integration, transformation and custom AI builds, governed from day one.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout concept: a left-aligned 12-col page on cool paper; the signature move is the offset stack (existing systems below, one teal AI layer on top), used in the hero, the featured service and the footer mark. */
+:root{
+  --paper:#f4f6f5;--surface:#ffffff;--ink:#12171b;--muted:#55626a;--line:#d6ddda;
+  --layer:#0b6e66;--layer-strong:#085650;--layer-tint:#dcefeb;--on-layer:#ffffff;
+  --stack:#7fa9a3;--deep:#0f2a2e;--on-deep:#e9eeec;--deep-muted:#a9bcb9;
+  --guard:#d9921c;--guard-ink:#8a5300;--guard-tint:#fbefd9;--good:#1f7a3a;--critical:#b3261e;
+  --font-display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --font-body:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --r-sm:4px;--r-md:8px;--r-lg:14px;
+  --shadow-layer:0 1px 0 #d6ddda,0 8px 24px -12px rgba(15,42,46,.25);
+  --max:1200px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0e1214;--surface:#161b1e;--ink:#e9eeec;--muted:#9aa6a9;--line:#2a3236;
+  --layer:#3fc1b1;--layer-strong:#6fd6c8;--layer-tint:#12302d;--on-layer:#06201d;
+  --stack:#6e8f8b;--deep:#1a3236;--on-deep:#e9eeec;--deep-muted:#a9bcb9;
+  --guard:#f2b54a;--guard-ink:#f2b54a;--guard-tint:#3a2a0e;--good:#5fcf7f;--critical:#ff8a80;
+  --shadow-layer:0 1px 0 #2a3236,0 8px 24px -12px rgba(0,0,0,.6);color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0e1214;--surface:#161b1e;--ink:#e9eeec;--muted:#9aa6a9;--line:#2a3236;
+  --layer:#3fc1b1;--layer-strong:#6fd6c8;--layer-tint:#12302d;--on-layer:#06201d;
+  --stack:#6e8f8b;--deep:#1a3236;--on-deep:#e9eeec;--deep-muted:#a9bcb9;
+  --guard:#f2b54a;--guard-ink:#f2b54a;--guard-tint:#3a2a0e;--good:#5fcf7f;--critical:#ff8a80;
+  --shadow-layer:0 1px 0 #2a3236,0 8px 24px -12px rgba(0,0,0,.6);color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/26px var(--font-body);-webkit-font-smoothing:antialiased}
+a{color:var(--layer);text-underline-offset:3px}
+:focus-visible{outline:2px solid var(--layer);outline-offset:2px;border-radius:2px}
+.wrap{max-width:var(--max);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+@media (min-width:720px){.wrap{padding-left:max(32px,env(safe-area-inset-left,0px));padding-right:max(32px,env(safe-area-inset-right,0px))}}
+section{padding-block:64px}
+@media (min-width:900px){section{padding-block:96px}}
+h1,h2,h3{font-family:var(--font-display);margin:0;text-wrap:balance;letter-spacing:-.015em}
+h2{font-size:clamp(28px,4vw,40px);line-height:1.12;font-weight:700}
+h3{font-size:20px;line-height:28px;font-weight:600;letter-spacing:-.005em}
+p{margin:0}
+.eyebrow{font:500 12px/16px var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--layer)}
+.lead{font-size:18px;line-height:28px;color:var(--muted);max-width:60ch}
+.head{display:grid;gap:12px;margin-bottom:40px;max-width:760px}
+.mono{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+
+/* header */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font:700 22px/1 var(--font-display);letter-spacing:-.02em}
+.brand svg{width:28px;height:28px}
+nav.links{display:none;gap:28px}
+nav.links a{color:var(--ink);text-decoration:none;font-size:15px}
+nav.links a:hover{color:var(--layer)}
+@media (min-width:880px){nav.links{display:flex}}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;font:500 15px/20px var(--font-body);padding:12px 22px;border-radius:var(--r-md);border:1px solid transparent;text-decoration:none;cursor:pointer;white-space:nowrap}
+.btn.primary{background:var(--layer);color:var(--on-layer)}
+.btn.primary:hover{background:var(--layer-strong)}
+.btn.secondary{background:var(--surface);color:var(--ink);border-color:var(--line)}
+.btn.secondary:hover{border-color:var(--ink)}
+.btn.sm{padding:8px 14px;font-size:14px}
+
+/* hero */
+.hero{padding-block:56px 72px}
+.hero .grid{display:grid;gap:48px;align-items:center}
+@media (min-width:960px){.hero .grid{grid-template-columns:1.05fr .95fr;gap:56px}}
+.hero h1{font-size:clamp(40px,6.2vw,68px);line-height:1.0;font-weight:700;letter-spacing:-.025em}
+.hero h1 em{font-style:normal;color:var(--layer)}
+.hero .copy{display:grid;gap:24px;min-width:0}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px}
+.fine{font-size:14px;line-height:22px;color:var(--muted)}
+
+/* stack diagram */
+.stack{position:relative;display:grid;gap:12px;padding:8px 0 8px 0;min-width:0}
+.bar{border-radius:var(--r-md);padding:16px 18px;display:grid;gap:8px;min-width:0}
+.bar .k{font:500 11.5px/16px var(--font-mono);letter-spacing:.08em;text-transform:uppercase}
+.bar .v{font-size:15px;line-height:22px}
+.bar.ai{background:var(--layer);color:var(--on-layer);margin-left:12%;box-shadow:var(--shadow-layer)}
+.bar.ai .k{opacity:.85}
+.bar.ai .v{font-weight:500}
+.bar.data{background:var(--layer-tint);color:var(--ink);margin-left:6%;border:1px solid color-mix(in srgb,var(--stack) 50%,transparent)}
+.bar.sys{background:var(--deep);color:var(--on-deep)}
+.bar.sys .k{color:var(--deep-muted)}
+.tools{display:flex;flex-wrap:wrap;gap:6px}
+.tools span{font:500 13px/18px var(--font-body);padding:4px 10px;border-radius:var(--r-sm);background:color-mix(in srgb,var(--on-deep) 10%,transparent);border:1px solid color-mix(in srgb,var(--on-deep) 18%,transparent)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;align-items:center;gap:8px;background:var(--guard-tint);color:var(--guard-ink);border:1px solid var(--guard);border-radius:var(--r-sm);padding:4px 10px;font:500 13px/18px var(--font-body)}
+.chip::before{content:"";width:8px;height:8px;border-radius:2px;background:var(--guard);flex:none}
+.stack .gates{margin-left:12%;padding-left:2px}
+.stack-cap{font:400 13px/20px var(--font-mono);color:var(--muted);margin-top:4px}
+
+/* works with */
+.works{border-block:1px solid var(--line);padding-block:20px}
+.works .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:10px 28px}
+.works .label{font:500 12px/16px var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.works ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px 24px}
+.works li{font:600 15px/22px var(--font-body);color:var(--ink)}
+
+/* problem */
+.problems{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden}
+@media (min-width:820px){.problems{grid-template-columns:repeat(3,1fr)}}
+.problem{background:var(--surface);padding:28px 24px;display:grid;gap:10px;align-content:start}
+.problem .q{font:600 19px/26px var(--font-display);letter-spacing:-.005em}
+.problem p{color:var(--muted);font-size:15px;line-height:24px}
+
+/* layers */
+.layers{display:grid;gap:28px}
+@media (min-width:960px){.layers{grid-template-columns:repeat(3,1fr);gap:24px}}
+.card{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);padding:28px 24px;display:grid;gap:14px;align-content:start;min-width:0}
+.card.featured{box-shadow:var(--shadow-layer)}
+.card.featured::before{content:"";position:absolute;inset:0;transform:translate(-10px,12px);border-radius:var(--r-md);background:var(--layer-tint);z-index:-1}
+.layers{isolation:isolate}
+.card .tag{justify-self:start;font:500 12px/16px var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--layer);background:var(--layer-tint);padding:4px 8px;border-radius:var(--r-sm)}
+.card p{color:var(--muted);font-size:15px;line-height:24px}
+.card ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;border-top:1px solid var(--line);padding-top:14px}
+.card li{font-size:15px;line-height:22px;padding-left:18px;position:relative}
+.card li::before{content:"";position:absolute;left:0;top:8px;width:8px;height:6px;border-radius:1px;background:var(--stack)}
+.card .who{font:400 13.5px/20px var(--font-mono);color:var(--muted)}
+
+/* method */
+.method{display:grid;gap:0;counter-reset:s;border-top:1px solid var(--line)}
+@media (min-width:900px){.method{grid-template-columns:repeat(5,1fr);border-top:0}}
+.step{padding:22px 0;border-bottom:1px solid var(--line);display:grid;gap:8px;align-content:start}
+@media (min-width:900px){.step{padding:0 20px 0 0;border-bottom:0;border-top:3px solid var(--line);padding-top:20px}.step.on{border-top-color:var(--layer)}.step.gov{border-top-color:var(--guard)}}
+.step .n{font:500 12px/16px var(--font-mono);letter-spacing:.08em;color:var(--muted)}
+.step h3{font-size:22px}
+.step p{color:var(--muted);font-size:15px;line-height:23px}
+
+/* safe */
+.safe{background:var(--surface);border-block:1px solid var(--line)}
+.controls{display:grid;gap:12px}
+@media (min-width:640px){.controls{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1000px){.controls{grid-template-columns:repeat(4,1fr)}}
+.control{border:1px solid var(--line);border-radius:var(--r-md);padding:20px;display:grid;gap:10px;align-content:start;background:var(--paper)}
+.control p{font-size:14.5px;line-height:22px;color:var(--muted)}
+.note{margin-top:28px;font-size:14px;line-height:22px;color:var(--muted);max-width:70ch}
+
+/* network */
+.network{background:var(--deep);color:var(--on-deep)}
+.network .grid{display:grid;gap:40px}
+@media (min-width:900px){.network .grid{grid-template-columns:1fr 1fr;align-items:start}}
+.network h2{color:var(--on-deep)}
+.network .lead{color:var(--deep-muted)}
+.network .eyebrow{color:var(--on-deep);opacity:.75}
+.flow{display:grid;gap:10px;list-style:none;margin:0;padding:0}
+.flow li{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;padding:16px 18px;border:1px solid color-mix(in srgb,var(--on-deep) 18%,transparent);border-radius:var(--r-md)}
+.flow .n{font:500 12px/22px var(--font-mono);color:var(--deep-muted)}
+.flow b{font-weight:600;display:block}
+.flow span.d{color:var(--deep-muted);font-size:15px;line-height:23px}
+.pending{display:inline-block;margin-top:20px;font:500 13px/18px var(--font-mono);color:var(--deep-muted);border:1px dashed color-mix(in srgb,var(--on-deep) 35%,transparent);padding:8px 12px;border-radius:var(--r-sm)}
+
+/* packages */
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r-md);background:var(--surface)}
+table{width:100%;border-collapse:collapse;min-width:640px}
+th,td{text-align:left;padding:16px 20px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:500 12px/16px var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td.pk{font:600 17px/24px var(--font-display)}
+td.pk small{display:block;font:400 14px/21px var(--font-body);color:var(--muted);margin-top:4px}
+td.mono{font-size:14px;white-space:nowrap}
+tr.entry td{background:color-mix(in srgb,var(--layer-tint) 55%,var(--surface))}
+
+/* founder */
+.founder{display:grid;gap:32px}
+@media (min-width:900px){.founder{grid-template-columns:.8fr 1.2fr;align-items:start}}
+.founder .facts{display:grid;gap:0;border-top:1px solid var(--line)}
+.founder .facts div{display:grid;grid-template-columns:140px 1fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
+.founder .facts dt{font:500 12px/22px var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.founder .facts dd{margin:0}
+@media (max-width:480px){.founder .facts div{grid-template-columns:1fr;gap:2px}}
+
+/* faq */
+.faq{display:grid;gap:0;border-top:1px solid var(--line);max-width:860px}
+details{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;list-style:none;padding:20px 32px 20px 0;font:600 18px/26px var(--font-display);position:relative}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:4px;top:18px;font:400 22px/26px var(--font-mono);color:var(--layer)}
+details[open] summary::after{content:"\2212"}
+details p{padding:0 0 20px;color:var(--muted);max-width:68ch}
+
+/* contact */
+.contact{background:var(--surface);border-top:1px solid var(--line)}
+.contact .grid{display:grid;gap:40px}
+@media (min-width:900px){.contact .grid{grid-template-columns:.9fr 1.1fr}}
+form{display:grid;gap:16px}
+.row2{display:grid;gap:16px}
+@media (min-width:600px){.row2{grid-template-columns:1fr 1fr}}
+label{display:grid;gap:6px;font-size:14px;font-weight:500}
+input,select,textarea{font:400 16px/24px var(--font-body);color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:var(--r-sm);padding:10px 12px;width:100%;min-width:0}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--layer);outline-offset:0;border-color:var(--layer)}
+textarea{min-height:120px;resize:vertical}
+.err{color:var(--critical);font-size:13px;min-height:0}
+.sent{border:1px solid var(--good);border-radius:var(--r-md);padding:16px 18px;color:var(--ink);background:var(--paper)}
+.sent b{color:var(--good)}
+
+footer{background:var(--deep);color:var(--on-deep);padding-block:40px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;align-items:center}
+footer .brand{color:var(--on-deep)}
+footer p{color:var(--deep-muted);font-size:14px}
+footer a{color:var(--on-deep)}
+</style>
+
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Layerwise home">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="4" y="40" width="44" height="14" rx="4" fill="var(--deep)"/><rect x="10" y="26" width="44" height="14" rx="4" fill="var(--stack)"/><rect x="16" y="12" width="44" height="14" rx="4" fill="var(--layer)"/></svg>
+      layerwise
+    </a>
+    <nav class="links" aria-label="Main">
+      <a href="#layers">Services</a><a href="#method">Method</a><a href="#safe">Safety</a><a href="#network">Advisory</a><a href="#packages">Packages</a>
+    </nav>
+    <a class="btn primary sm" href="#contact">Book an Audit</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap grid">
+      <div class="copy">
+        <span class="eyebrow">AI integration · UAE</span>
+        <h1>Add AI to the systems you already run. <em>Safely.</em></h1>
+        <p class="lead">Layerwise builds AI into your CRM, workspace, WhatsApp and internal tools. Governed from the first day, measured in hours saved, and owned by you.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="#contact">Book an AI Systems Audit</a>
+          <a class="btn secondary" href="#layers">See the three layers</a>
+        </div>
+        <p class="fine">Audit takes 2 to 3 weeks and ends with a priced plan. You keep the plan whether or not we build it.</p>
+      </div>
+      <div class="stack" role="img" aria-label="Diagram: the Layerwise AI layer sits on top of your data and processes, which sit on your existing systems, with safety controls on every action.">
+        <div class="bar ai"><span class="k">Layer 03 · Added by Layerwise</span><span class="v">AI agents and automations that draft, sort, answer and report</span></div>
+        <div class="chips gates"><span class="chip">Human approval</span><span class="chip">Audit log</span><span class="chip">Least privilege</span></div>
+        <div class="bar data"><span class="k">Layer 02 · Yours</span><span class="v">Your data, documents and processes, classified before AI touches them</span></div>
+        <div class="bar sys"><span class="k">Layer 01 · Yours, unchanged</span>
+          <div class="tools"><span>CRM</span><span>ERP</span><span>Microsoft 365</span><span>Google Workspace</span><span>WhatsApp</span><span>Ticketing</span></div>
+        </div>
+        <p class="stack-cap">Nothing below the top layer gets replaced.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="works" aria-label="Systems we work inside">
+    <div class="wrap">
+      <span class="label">Works inside</span>
+      <ul><li>Microsoft 365</li><li>Google Workspace</li><li>WhatsApp Business</li><li>HubSpot</li><li>Salesforce</li><li>Zoho</li><li>Odoo</li><li>Your internal tools</li></ul>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Where companies are today</span>
+        <h2>Your team already uses AI. Nobody set the rules.</h2>
+      </div>
+      <div class="problems">
+        <div class="problem"><span class="q">Staff paste client data into chatbots</span><p>There is no policy for which tools are allowed or what must never leave the company.</p></div>
+        <div class="problem"><span class="q">Manual work lives inside paid tools</span><p>The CRM, inbox and WhatsApp are full of copy-paste work that software could draft for a person to approve.</p></div>
+        <div class="problem"><span class="q">Pilots that never reach production</span><p>A demo impressed the board. Six months later it still is not connected to anything real.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="layers">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">What we do</span>
+        <h2>Three layers of work, one way of delivering it</h2>
+        <p class="lead">Every engagement starts with an AI Systems Audit. The Audit tells you which of these you need, and which you don't.</p>
+      </div>
+      <div class="layers">
+        <article class="card featured">
+          <span class="tag">01 · Integrate</span>
+          <h3>AI inside the systems you already run</h3>
+          <p>For companies with tools and processes in place. We add agents and automations where the hours go, without replacing what works.</p>
+          <ul><li>Integration map of your systems and data</li><li>Agents inside CRM, inbox, WhatsApp, ERP</li><li>Access rules, approval steps, logs</li><li>Staff handover and training</li></ul>
+          <span class="who">For: operations and IT leads</span>
+        </article>
+        <article class="card">
+          <span class="tag">02 · Transform</span>
+          <h3>A full AI program, run properly</h3>
+          <p>For SMEs: readiness, roadmap, policy and rollout. For corporates: advisory, a fractional AI lead, and access to vetted global AI consultancies.</p>
+          <ul><li>Readiness score and 12-month roadmap</li><li>AI usage policy and risk register</li><li>Fractional AI Lead, 2 to 4 days a month</li><li>Advisory Network for large programs</li></ul>
+          <span class="who">For: owners, CEOs, transformation leads</span>
+        </article>
+        <article class="card">
+          <span class="tag">03 · Build</span>
+          <h3>Custom AI apps, agents and protocols</h3>
+          <p>When the tool you need does not exist. We build it, test it against misuse, and document how people and agents work with it.</p>
+          <ul><li>Internal AI tools and agents</li><li>AI protocols: who does what, human or agent</li><li>Test suites and run-books</li><li>Your repo, your code, your data</li></ul>
+          <span class="who">For: teams with a specific problem</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="method" style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Method</span>
+        <h2>Same five steps on every project</h2>
+        <p class="lead">So you know what happens next, what it costs and when you see results.</p>
+      </div>
+      <ol class="method" style="list-style:none;margin:0;padding:0">
+        <li class="step"><span class="n">STEP 1</span><h3>Map</h3><p>Systems, data, people, and the processes that take the most hours.</p></li>
+        <li class="step"><span class="n">STEP 2</span><h3>Assess</h3><p>Score each process for value, risk and data sensitivity. Pick one to three.</p></li>
+        <li class="step on"><span class="n">STEP 3</span><h3>Layer</h3><p>Build the AI layer inside your current tools. Replace nothing without a reason.</p></li>
+        <li class="step gov"><span class="n">STEP 4</span><h3>Govern</h3><p>Policy, permissions, approvals and logs in place before anything goes live.</p></li>
+        <li class="step"><span class="n">STEP 5</span><h3>Run</h3><p>Monitor, report hours saved, and improve every month.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="safe" class="safe">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow" style="color:var(--guard-ink)">Safe by default</span>
+        <h2>Eight controls on every project. Not an add-on.</h2>
+        <p class="lead">The UAE set up a federal authority for AI and data in 2026. Governance is becoming an expectation. We build it in from the start.</p>
+      </div>
+      <div class="controls">
+        <div class="control"><span class="chip">Data classified</span><p>Every source tagged public, internal, confidential or personal before AI reads it.</p></div>
+        <div class="control"><span class="chip">Model and region choice</span><p>Sensitive data only goes to providers and regions you approve.</p></div>
+        <div class="control"><span class="chip">Human approval</span><p>A person approves anything that reaches a customer, moves money or changes records.</p></div>
+        <div class="control"><span class="chip">Prompt-injection tested</span><p>Agents are tested against hostile emails, web pages and documents before launch.</p></div>
+        <div class="control"><span class="chip">Least privilege</span><p>Each agent gets only the permissions its task needs.</p></div>
+        <div class="control"><span class="chip">Audit log</span><p>Every agent action is recorded and reviewable.</p></div>
+        <div class="control"><span class="chip">Usage policy</span><p>A one-page staff policy: approved tools, and what never gets pasted into them.</p></div>
+        <div class="control"><span class="chip">Exit plan</span><p>You own the code, prompts and data. Handover is documented.</p></div>
+      </div>
+      <p class="note">These are working practices. Layerwise does not issue legal opinions or certifications; where you need formal compliance sign-off, we work alongside your lawyer or auditor.</p>
+    </div>
+  </section>
+
+  <section id="network" class="network">
+    <div class="wrap grid">
+      <div class="head" style="margin:0">
+        <span class="eyebrow">For corporates</span>
+        <h2>The Advisory Network</h2>
+        <p class="lead">Large programs need more than one firm. We bring in vetted global AI consultancies for strategy and scale, and stay on as your program owner so the work connects to your systems and your rules.</p>
+        <span class="pending">Partner firms are announced as agreements are signed.</span>
+      </div>
+      <ol class="flow">
+        <li><span class="n">01</span><div><b>Scope</b><span class="d">We define the program, the risks and what success looks like.</span></div></li>
+        <li><span class="n">02</span><div><b>Match</b><span class="d">You get a shortlist of partner firms that fit the scope, with our view on each.</span></div></li>
+        <li><span class="n">03</span><div><b>Own</b><span class="d">We run the program day to day as your fractional AI lead.</span></div></li>
+        <li><span class="n">04</span><div><b>Integrate</b><span class="d">Whatever the partners design, we connect to your systems with the same safety controls.</span></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="packages">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Packages</span>
+        <h2>Fixed scope, fixed price</h2>
+        <p class="lead">No open-ended day rates. The Audit sets the scope; every build after it gets a fixed quote.</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Package</th><th>Duration</th><th>Price</th><th>You get</th></tr></thead>
+          <tbody>
+            <tr class="entry"><td class="pk">AI Systems Audit<small>The starting point for everyone</small></td><td class="mono">2–3 weeks</td><td class="mono">from AED 9,500</td><td>Systems map, scored opportunities, risk notes, priced plan</td></tr>
+            <tr><td class="pk">Integration Sprint<small>Layer 01</small></td><td class="mono">6–12 weeks</td><td class="mono">Fixed quote</td><td>AI working inside your tools, with controls and handover</td></tr>
+            <tr><td class="pk">Build Sprint<small>Layer 03</small></td><td class="mono">4–10 weeks</td><td class="mono">Fixed quote</td><td>A working app or agent, tests and documentation</td></tr>
+            <tr><td class="pk">Run &amp; Govern<small>After any sprint</small></td><td class="mono">Monthly</td><td class="mono">Monthly fee</td><td>Monitoring, monthly report, fixes and improvements</td></tr>
+            <tr><td class="pk">Fractional AI Lead<small>Layer 02</small></td><td class="mono">2–4 days / month</td><td class="mono">Monthly fee</td><td>Named AI lead for strategy, vendors, policy and the board</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap founder">
+      <div class="head" style="margin:0">
+        <span class="eyebrow">Who you work with</span>
+        <h2>Amr Samir Edris, founder</h2>
+        <p class="lead">Certified in AI and agents. Builds AI agents and systems for events, marketing and operations teams in the UAE. Background in live event production and digital marketing, where systems have to work on the day.</p>
+        <p><a href="https://linkedin.com/in/amrsamiredris" target="_blank" rel="noopener">LinkedIn profile</a></p>
+      </div>
+      <dl class="facts" style="margin:0">
+        <div><dt>Based in</dt><dd>Abu Dhabi, working across the UAE</dd></div>
+        <div><dt>Languages</dt><dd>Arabic and English</dd></div>
+        <div><dt>Background</dt><dd>Event production, digital marketing, AI systems and automation</dd></div>
+        <div><dt>Works with</dt><dd>Owners, operations leads and transformation teams</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="head"><span class="eyebrow">Questions</span><h2>Before you book</h2></div>
+      <div class="faq">
+        <details><summary>Where does our data go?</summary><p>Only to the AI providers and regions you approve in the Audit. Confidential and personal data can stay inside your own cloud account when the project needs it.</p></details>
+        <details><summary>Do we have to replace our systems?</summary><p>No. The whole approach is to add AI on top of what you run today. We only recommend a replacement when a system blocks the work, and we tell you why.</p></details>
+        <details><summary>Who owns what you build?</summary><p>You do: the code, the prompts, the workflows and the data. It lives in your accounts, and handover is documented so another team can run it.</p></details>
+        <details><summary>How fast will we see results?</summary><p>The Audit takes 2 to 3 weeks. A first integration usually goes live within 6 to 12 weeks, depending on access to your systems and approvals on your side.</p></details>
+        <details><summary>What should AI not do in our company?</summary><p>Make final decisions about people, money or customers without a person approving. We write those limits into your usage policy and into the agents themselves.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap grid">
+      <div class="head" style="margin:0">
+        <span class="eyebrow">Book an AI Systems Audit</span>
+        <h2>Tell us what you run and where the hours go</h2>
+        <p class="lead">You get a reply with a short call slot and a list of what to prepare.</p>
+      </div>
+      <div>
+        <form id="lead" novalidate>
+          <div class="row2">
+            <label for="f-name">Name<input id="f-name" name="name" autocomplete="name" required></label>
+            <label for="f-email">Work email<input id="f-email" name="email" type="email" autocomplete="email" required></label>
+          </div>
+          <div class="row2">
+            <label for="f-company">Company<input id="f-company" name="company" autocomplete="organization" required></label>
+            <label for="f-size">Team size<select id="f-size" name="size"><option>1–19</option><option selected>20–99</option><option>100–249</option><option>250–999</option><option>1,000+</option></select></label>
+          </div>
+          <label for="f-systems">Systems you use<input id="f-systems" name="systems" placeholder="e.g. HubSpot, Microsoft 365, WhatsApp Business"></label>
+          <label for="f-problem">Where does most manual time go?<textarea id="f-problem" name="problem" placeholder="e.g. answering the same WhatsApp questions, building weekly reports by hand"></textarea></label>
+          <span class="err" id="f-err" role="alert"></span>
+          <div><button class="btn primary" type="submit">Request an Audit</button></div>
+        </form>
+        <div class="sent" id="f-sent" hidden><b>Preview only.</b> This form is not connected yet, so nothing was sent. At launch it delivers to the Layerwise inbox and CRM.</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="brand"><svg viewBox="0 0 64 64" aria-hidden="true" style="width:24px;height:24px"><rect x="4" y="40" width="44" height="14" rx="4" fill="var(--on-deep)"/><rect x="10" y="26" width="44" height="14" rx="4" fill="var(--stack)"/><rect x="16" y="12" width="44" height="14" rx="4" fill="#3fc1b1"/></svg>layerwise</span>
+    <p>A safe AI layer for the systems you already run. Abu Dhabi, UAE.</p>
+    <p><a href="https://linkedin.com/in/amrsamiredris" target="_blank" rel="noopener">LinkedIn</a></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var f=document.getElementById('lead'),err=document.getElementById('f-err'),sent=document.getElementById('f-sent');
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var miss=[];
+    if(!f.elements['name'].value.trim())miss.push('name');
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.elements['email'].value.trim()))miss.push('a valid work email');
+    if(!f.elements['company'].value.trim())miss.push('company');
+    if(miss.length){err.textContent='Add '+miss.join(', ')+' so we can reply.';return;}
+    err.textContent='';f.hidden=true;sent.hidden=false;
+  });
+})();
+</script>
+
+</body>
+</html>
