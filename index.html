@@ -35,7 +35,7 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--sky);color:var(--sky-ink);font-family:var(--face);font-size:var(--step-body);line-height:1.5;-webkit-font-smoothing:antialiased;transition:background-color .3s}
+body{margin:0;overflow-x:clip;background:var(--sky);color:var(--sky-ink);font-family:var(--face);font-size:var(--step-body);line-height:1.5;-webkit-font-smoothing:antialiased;transition:background-color .3s}
 img{max-width:100%;display:block}
 h1,h2,h3,p,dl,dd,ul,ol,figure{margin:0}
 ul,ol{padding:0;list-style:none}
@@ -76,7 +76,7 @@ h2{font-size:var(--step-head)}
 @media (min-width:760px){.nav .opt{display:list-item}}
 
 /* hero */
-.hero{min-height:100svh;overflow:hidden;display:flex;align-items:center;padding-block:120px 80px}
+.hero{position:relative;min-height:100svh;overflow:hidden;display:flex;align-items:center;padding-block:120px 80px}
 .hero .grid{position:relative;z-index:2;width:100%}
 .hero-copy{grid-column:1 / span 7;display:grid;gap:32px;padding-left:4vw}
 .hero h1{font-size:var(--step-display)}
@@ -89,7 +89,7 @@ h2{font-size:var(--step-head)}
 @media (max-width:759px){
   .hero{align-items:flex-start;padding-top:15svh;min-height:100svh}
   .hero-copy{grid-column:1 / -1;padding-left:0;gap:20px}
-  .hero h1{font-size:11.5vw}
+  .hero h1{font-size:9.2vw}
   .hero .lead{font-size:var(--step-body)}
   .slabs{width:130vw;left:50%;top:auto;bottom:-14svh;transform:translateX(-46%)}
 }
@@ -97,7 +97,7 @@ h2{font-size:var(--step-head)}
 /* intro */
 .intro .grid{align-items:end;row-gap:48px}
 .intro-text{grid-column:1 / span 6;display:grid;gap:40px}
-.statement{font-size:clamp(1.5rem,1rem + 1.6vw,2.25rem);line-height:1.2;font-weight:500;max-width:22ch}
+.statement{font-size:clamp(1.5rem,1rem + 1.6vw,2.25rem);line-height:1.2;font-weight:500;max-width:30ch}
 .intro figure{grid-column:8 / -1}
 .intro figure img{width:100%;aspect-ratio:4/5;object-fit:cover}
 .cap{font-size:var(--step-small);margin-top:12px}
@@ -121,9 +121,9 @@ h2{font-size:var(--step-head)}
 .switch input:checked{background:var(--sky-ink)}
 .switch input:checked::after{transform:translateX(26px);background:var(--sky)}
 /* the output card is a product fragment: its own borders allowed */
-.card-ui{width:min(440px,100%);background:#fffdf5;color:#141414;border:2px solid #141414;padding:24px;display:grid;gap:18px;font-size:15px;line-height:1.4}
+.card-ui{width:min(440px,100%);background:#ffffff;color:#141414;border:2px solid #141414;padding:24px;display:grid;gap:18px;font-size:15px;line-height:1.4}
 .card-ui header{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
-.card-ui header b{font-size:20px;font-weight:800;letter-spacing:-0.02em}
+.card-ui header b{font-size:var(--step-lead);font-weight:800;letter-spacing:-0.02em}
 .card-ui header span{font-size:13px}
 .card-ui h4{margin:0 0 8px;font-size:13px;font-weight:800}
 .card-ui .tags{display:flex;flex-wrap:wrap;gap:6px}
@@ -132,7 +132,7 @@ h2{font-size:var(--step-head)}
 .card-ui ul li{padding:6px 8px;background:#f3eedd}
 .card-ui .ctl li::before{content:"";display:inline-block;width:9px;height:9px;background:#b0298f;margin-right:8px;vertical-align:1px}
 .card-ui .warn{background:#ffe7a3;padding:8px 10px}
-.card-ui .next{background:#141414;color:#fffdf5;padding:12px 14px;font-weight:500}
+.card-ui .next{background:#141414;color:#ffffff;padding:12px 14px;font-weight:500}
 .card-ui .empty{color:#555}
 @media (max-width:899px){
   .plan .grid{display:block}
@@ -140,7 +140,7 @@ h2{font-size:var(--step-head)}
   .card-ui{box-shadow:none;font-size:14px;gap:12px;padding:16px}
   .plan-in{padding-block:48px 64px;gap:56px}
   .plan-in > h2{margin-bottom:0;font-size:10vw}
-  .block h3{font-size:22px}
+  .block h3{font-size:var(--step-lead)}
 }
 
 /* how */
@@ -154,17 +154,17 @@ h2{font-size:var(--step-head)}
 .stages{grid-column:1 / -1;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:10px}
 .stage{display:grid;gap:6px;max-width:34ch}
 .stage:nth-child(1){grid-column:1 / span 3}.stage:nth-child(2){grid-column:4 / span 4}.stage:nth-child(3){grid-column:8 / span 5}
-.stage b{font-size:20px;font-weight:500}
+.stage b{font-size:var(--step-lead);font-weight:500}
 /* mini interface fragments */
-.ui{background:#fffdf5;color:#141414;border:2px solid #141414;font-size:13px;line-height:1.35;width:100%}
-.ui .bar{background:#141414;color:#fffdf5;padding:6px 10px;font-weight:500}
+.ui{background:#ffffff;color:#141414;border:2px solid #141414;font-size:13px;line-height:1.35;width:100%}
+.ui .bar{background:#141414;color:#ffffff;padding:6px 10px;font-weight:500}
 .ui .in{padding:10px;display:grid;gap:6px}
 .ui .r{display:flex;justify-content:space-between;gap:8px}
 .ui .hot{background:#ffc013;padding:0 4px}
 .ui .msg{background:#cbe4f2;padding:8px}
 .ui .acts{display:flex;gap:6px}
 .ui .acts span{padding:4px 8px;border:2px solid #141414;font-weight:500}
-.ui .acts .ok{background:#141414;color:#fffdf5}
+.ui .acts .ok{background:#141414;color:#ffffff}
 .ui .bars{display:grid;gap:6px}
 .ui .bars i{display:block;height:12px;background:#b0298f}
 .u1{max-width:220px}.u2{max-width:300px}.u3{max-width:400px}
@@ -178,17 +178,18 @@ h2{font-size:var(--step-head)}
 
 /* safety: cards fold into spines */
 .safety{padding:0;min-height:auto}
-.deck-wrap{height:280svh;position:relative}
+.deck-wrap{height:200svh;position:relative}
 .deck-stage{position:sticky;top:0;height:100svh;display:flex;flex-direction:column;justify-content:center;gap:40px;overflow:hidden}
 .deck-stage h2{font-size:clamp(48px,4.2vw,64px)}
 .deck{position:relative;height:360px;display:flex;gap:0}
 .dc{position:relative;flex:none;height:100%;overflow:hidden;color:var(--sand-ink);transition:width .5s var(--ease);cursor:pointer;border:0;text-align:left;font:inherit;padding:0}
 .dc:nth-child(3n+1){background:var(--sand)}.dc:nth-child(3n+2){background:var(--sand-2)}.dc:nth-child(3n){background:var(--sand-3)}
 .dc .body{position:absolute;inset:0;width:var(--cw,620px);padding:32px;display:flex;flex-direction:column;gap:14px}
-.dc h3{font-size:30px;line-height:1.1;letter-spacing:-0.02em}
-.dc p{font-size:16px;max-width:44ch}
-.dc .foot{margin-top:auto;display:flex;justify-content:space-between;gap:16px;font-size:16px}
-.deck-after{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 32px;font-size:17px}
+.dc h3{font-size:var(--step-lead);line-height:1.1;letter-spacing:-0.02em}
+.dc p{font-size:var(--step-body);max-width:44ch}
+.dc.spine .body{visibility:hidden}
+.dc .foot{margin-top:auto;display:flex;justify-content:space-between;gap:16px;font-size:var(--step-body)}
+.deck-after{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 32px;font-size:var(--step-body)}
 .deck-after p{max-width:60ch}
 @media (max-width:899px){
   .deck-wrap{height:auto}
@@ -197,20 +198,23 @@ h2{font-size:var(--step-head)}
   .deck{flex-direction:column;height:auto;gap:12px}
   .dc{width:auto!important;cursor:default}
   .dc .body{position:static;width:auto;padding:24px}
-  .dc h3{font-size:24px}
+  .dc h3{font-size:var(--step-lead)}
 }
 
 /* pricing */
 .price{min-height:80svh;display:flex;align-items:center}
 .price h2{font-size:clamp(3rem,8.5vw,9.5rem);line-height:0.95;max-width:14ch}
-.pb{background:var(--night);color:var(--sun);padding:0 .15em;display:inline-block;line-height:1;white-space:nowrap}
+.reveal{margin-top:32px;min-height:clamp(56px,6vw,96px);display:flex;align-items:center}
+.pb{background:var(--night);color:var(--sun);padding:.05em .2em;display:inline-block;line-height:1;white-space:nowrap;font-weight:800;letter-spacing:-0.03em;font-size:clamp(2.5rem,5.5vw,6rem)}
+.pb:not([hidden]){animation:pop .4s var(--ease)}
+@keyframes pop{from{opacity:0;transform:translateY(12px)}}
 .price-row{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;align-items:end;margin-top:64px;row-gap:24px}
-.price-row p{grid-column:1 / span 6;font-size:20px;line-height:1.45;max-width:46ch}
+.price-row p{grid-column:1 / span 6;font-size:var(--step-lead);line-height:1.45;max-width:46ch}
 .price-row .btn{grid-column:10 / -1;justify-self:end}
 .packs{grid-column:1 / -1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;margin-top:40px}
 .packs div{background:rgba(10,10,10,.08);padding:20px;display:grid;gap:4px;align-content:start}
-.packs dt{font-weight:800;font-size:20px;letter-spacing:-0.01em}
-.packs dd{font-size:16px}
+.packs dt{font-weight:800;font-size:var(--step-lead);letter-spacing:-0.01em}
+.packs dd{font-size:var(--step-body)}
 @media (max-width:899px){
   .price h2{font-size:11vw}
   .price-row p,.price-row .btn{grid-column:1 / -1;justify-self:stretch}
@@ -223,8 +227,8 @@ h2{font-size:var(--step-head)}
 .panel{background:var(--night);color:var(--night-ink);min-height:110svh;overflow:hidden;position:relative;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;padding:56px}
 .panel h2{grid-column:1 / span 6;font-size:clamp(40px,4.4vw,64px);line-height:.95;align-self:start}
 .panel .side{grid-column:8 / -1;display:grid;gap:64px;align-content:start;max-width:420px}
-.panel h3{font-size:22px;letter-spacing:-0.01em;line-height:1.1;margin-bottom:12px}
-.panel .side p{font-size:16px;line-height:1.55}
+.panel h3{font-size:var(--step-lead);letter-spacing:-0.01em;line-height:1.1;margin-bottom:12px}
+.panel .side p{font-size:var(--step-body);line-height:1.55}
 .panel .side .btn{justify-self:start;background:var(--night-ink);color:var(--night)}
 .shape{position:absolute;left:56px;bottom:-8%;width:38vw;max-width:620px;aspect-ratio:1/1;clip-path:polygon(0% 62%,74% 62%,74% 80%,0% 80%,0% 62%,12% 36%,88% 36%,88% 56%,12% 56%,12% 36%,24% 10%,100% 10%,100% 30%,24% 30%,24% 10%)}
 .shape img{width:100%;height:100%;object-fit:cover}
@@ -245,8 +249,8 @@ h2{font-size:var(--step-head)}
 .band:nth-of-type(even){background:var(--sky);color:var(--sky-ink)}
 .band .grid{align-items:start;row-gap:16px}
 .band h3{grid-column:1 / span 5;font-size:clamp(1.4rem,1rem + 1vw,2rem);line-height:1.1;letter-spacing:-0.02em}
-.band p{grid-column:7 / -1;font-size:18px;line-height:1.5;max-width:56ch}
-@media (max-width:759px){.faq-head{min-height:30svh}.faq-head h2{font-size:13vw}.band{padding-block:32px}.band h3,.band p{grid-column:1 / -1}.band h3{font-size:22px}.band p{font-size:17px}}
+.band p{grid-column:7 / -1;font-size:var(--step-body);line-height:1.5;max-width:56ch}
+@media (max-width:759px){.faq-head{min-height:30svh}.faq-head h2{font-size:13vw}.band{padding-block:32px}.band h3,.band p{grid-column:1 / -1}.band h3{font-size:var(--step-lead)}.band p{font-size:var(--step-body)}}
 
 /* contact */
 .contact{min-height:80svh;padding-block:48px 96px;overflow:hidden}
@@ -257,22 +261,19 @@ h2{font-size:var(--step-head)}
 .contact h2{font-size:clamp(36px,4vw,60px);margin-top:72px;line-height:.95}
 .contact .sub{font-size:var(--step-lead);max-width:40ch;margin-top:20px;font-weight:500}
 .cells{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:40px}
-.cells input,.cells button{height:96px;border:0;border-radius:0;font:500 18px/1 var(--face);text-align:center;background:var(--accent-2);color:var(--accent-ink);width:100%;transition:background-color .15s,transform .1s}
+.cells input,.cells button{height:96px;border:0;border-radius:0;font:500 var(--step-body)/1 var(--face);text-align:center;background:var(--accent-2);color:var(--accent-ink);width:100%;transition:background-color .15s,transform .1s}
 .cells input::placeholder{color:var(--accent-ink);opacity:.85}
 .cells input:focus{background:var(--accent-ink);color:var(--accent);outline:none}
 .cells input:focus::placeholder{color:var(--accent);opacity:.7}
-.cells button{background:var(--accent-ink);color:var(--accent);cursor:pointer;font-weight:800;font-size:20px}
+.cells button{background:var(--accent-ink);color:var(--accent);cursor:pointer;font-weight:800;font-size:var(--step-lead)}
 .cells button:hover{transform:translateY(-2px)}
 .cells button:active{transform:translateY(1px)}
-.fine{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:10px;font-size:var(--step-small)}
-.fine span:nth-child(2){grid-column:3}
+.fine{display:flex;flex-wrap:wrap;gap:6px 32px;margin-top:12px;font-size:var(--step-small)}
 .msg-out{margin-top:20px;font-size:var(--step-body);font-weight:500;min-height:1.5em}
+@media (max-width:899px){.cells{grid-template-columns:1fr}.cells input,.cells button{height:64px}}
 @media (max-width:759px){
   .strip img{height:110px}
   .contact h2{font-size:9vw}
-  .cells{grid-template-columns:1fr}
-  .cells input,.cells button{height:60px}
-  .fine{grid-template-columns:1fr}.fine span:nth-child(2){grid-column:auto}
 }
 
 /* footer */
@@ -289,7 +290,7 @@ footer{background:var(--night);color:var(--night-ink);min-height:90svh;padding-b
 .cols ul{display:grid;gap:8px}
 .cols a{text-decoration:none}.cols a:hover{text-decoration:underline}
 .legal{margin-top:auto;padding-top:96px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px;font-size:13px}
-.legal p{max-width:90ch}
+.legal p{max-width:72ch}
 .legal a{text-decoration:underline}
 @media (max-width:759px){.places,.cols{grid-column:1 / -1}.cols{grid-template-columns:1fr 1fr}.big{font-size:24vw}}
 
@@ -351,12 +352,12 @@ footer{background:var(--night);color:var(--night-ink);min-height:90svh;padding-b
     <div class="wrap grid">
       <div class="intro-text">
         <h2 id="h-intro" data-rise>AI with no rules</h2>
-        <p class="statement" data-rise style="--i:1">Your team already pastes client data into chatbots. Hours go to copy-paste work inside tools you pay for. Pilots impress, then never ship.</p>
+        <p class="statement" data-rise style="--i:1">Client data goes into chatbots. Copy-paste fills the tools you pay for. Pilots never ship.</p>
         <p data-rise style="--i:2;max-width:46ch">Layerwise works the other way round: start from the systems you have, add AI where the hours go, and set the rules before anything goes live.</p>
       </div>
       <figure data-rise style="--i:2">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Liwa_Oasis_and_the_Rub%27_al_Khali_Desert_%28MODIS_2022-08-31%29.jpg" width="1579" height="1186" alt="Satellite view of Liwa Oasis and the dunes of the Rub' al Khali, south of Abu Dhabi" loading="lazy">
-        <figcaption class="cap">Liwa and the Rub' al Khali from orbit: layer on layer of dunes south of Abu Dhabi. NASA MODIS, 2022.</figcaption>
+        <img src="https://images.unsplash.com/photo-1737575291989-0882b03f97b6?w=960&h=1200&fit=crop&auto=format&q=75" width="960" height="1200" alt="A professional in a kandura working at his desk in an office" loading="lazy">
+        <figcaption class="cap">The work AI should take on is already on this desk: the inbox, the follow-ups, the weekly report.</figcaption>
       </figure>
     </div>
   </section>
@@ -451,16 +452,17 @@ footer{background:var(--night);color:var(--night-ink);min-height:90svh;padding-b
           <button class="dc" type="button"><span class="body"><h3>A one-page staff policy</h3><p>Which AI tools are approved, and what must never be pasted into them. Written for your team, not for lawyers.</p><span class="foot"><span>In the Audit</span><a class="link" href="#contact">Ask about it</a></span></span></button>
           <button class="dc" type="button"><span class="body"><h3>You own it, and can leave</h3><p>The code, prompts, workflows and data are yours. Handover is documented so another team can run it.</p><span class="foot"><span>Every project</span><a class="link" href="#contact">Ask about it</a></span></span></button>
         </div>
-        <div class="deck-after"><p>Eight controls in every project. They are working practices, not a legal certification; for formal sign-off we work with your lawyer or auditor.</p><a class="link" href="#contact">Ask about compliance</a></div>
+        <div class="deck-after"><p>Eight controls in every project. They are working practices, not a legal certification; for formal sign-off we work with your lawyer or auditor. <a class="link" href="#contact">Ask about compliance</a>.</p></div>
       </div>
     </div>
   </section>
 
   <section class="price f-sun" id="pricing" aria-labelledby="h-price">
     <div class="wrap" style="width:100%">
-      <h2 id="h-price" data-rise>Start with an Audit from <span class="pb">AED 9,500</span></h2>
+      <h2 id="h-price" data-rise>Start with an Audit</h2>
+      <div class="reveal" data-rise style="--i:1"><button class="btn btn-night" type="button" id="showPrice" aria-expanded="false" aria-controls="priceVal">Show price</button><span class="pb" id="priceVal" hidden>From AED 9,500</span></div>
       <div class="price-row">
-        <p data-rise style="--i:1">Two to three weeks. We map your systems, data and the hours they cost, decide what AI should and should not do, and hand you a fixed-price plan you keep, whoever builds it.</p>
+        <p data-rise style="--i:2">Two to three weeks. We map your systems, data and the hours they cost, decide what AI should and should not do, and hand you a fixed-price plan you keep, whoever builds it.</p>
         <a class="btn btn-night" href="#contact" data-rise style="--i:2">Book the Audit</a>
         <dl class="packs" data-rise style="--i:3">
           <div><dt>Integration Sprint</dt><dd>AI inside your tools, 6 to 12 weeks, fixed quote after the Audit.</dd></div>
@@ -481,7 +483,7 @@ footer{background:var(--night);color:var(--night-ink);min-height:90svh;padding-b
         <a class="btn" href="https://linkedin.com/in/amrsamiredris" target="_blank" rel="noopener" data-rise style="--i:2">Amr on LinkedIn</a>
       </div>
       <figure class="shape shutter" id="shutter">
-        <img class="drift" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Liwa_Desert_Dune.jpg/1280px-Liwa_Desert_Dune.jpg" width="1280" height="853" alt="A tall dune in the Liwa desert, Abu Dhabi, its sand ridges stacked in layers" loading="lazy">
+        <img class="drift" src="https://images.unsplash.com/photo-1734009775179-07f428483783?w=1200&h=1200&fit=crop&auto=format&q=75" width="1200" height="1200" alt="Glass towers in Abu Dhabi reflecting an orange evening sky" loading="lazy">
       </figure>
     </div>
   </section>
@@ -498,18 +500,30 @@ footer{background:var(--night);color:var(--night-ink);min-height:90svh;padding-b
 
   <section class="contact f-accent" id="contact" aria-labelledby="h-contact">
     <div class="strip" aria-hidden="true">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Liwa_Desert_Dune.jpg/500px-Liwa_Desert_Dune.jpg" alt="" width="500" height="333">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Liwa_Desert_in_Abu_Dhabi.jpg/500px-Liwa_Desert_in_Abu_Dhabi.jpg" alt="" width="500" height="333">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Walnut_canyon_strata.jpg/500px-Walnut_canyon_strata.jpg" alt="" width="500" height="667">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Liwa_Desert.JPG/500px-Liwa_Desert.JPG" alt="" width="500" height="375">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Liwa_Oasis_-_panoramio_%282%29.jpg/500px-Liwa_Oasis_-_panoramio_%282%29.jpg" alt="" width="500" height="333">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Liwa_Desert_Road_in_Abu_Dhabi.jpg/500px-Liwa_Desert_Road_in_Abu_Dhabi.jpg" alt="" width="500" height="333">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Liwa_Desert_Dune.jpg/500px-Liwa_Desert_Dune.jpg" alt="" width="500" height="333">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Liwa_Desert_in_Abu_Dhabi.jpg/500px-Liwa_Desert_in_Abu_Dhabi.jpg" alt="" width="500" height="333">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Walnut_canyon_strata.jpg/500px-Walnut_canyon_strata.jpg" alt="" width="500" height="667">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Liwa_Desert.JPG/500px-Liwa_Desert.JPG" alt="" width="500" height="375">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Liwa_Oasis_-_panoramio_%282%29.jpg/500px-Liwa_Oasis_-_panoramio_%282%29.jpg" alt="" width="500" height="333">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Liwa_Desert_Road_in_Abu_Dhabi.jpg/500px-Liwa_Desert_Road_in_Abu_Dhabi.jpg" alt="" width="500" height="333">
+      <img src="https://images.unsplash.com/photo-1681505515542-3a6c4ef756c4?w=400&h=300&fit=crop&auto=format&q=75" alt="" width="400" height="300" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&h=300&fit=crop&auto=format&q=75" alt="" width="400" height="300" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1532622785990-d2c36a76f5a6?w=400&h=300&fit=crop&auto=format&q=75" alt="" width="400" height="300" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1681505526188-b05e68c77582?w=400&h=300&fit=crop&auto=format&q=75" alt="" width="400" height="300" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1564457461758-8ff96e439e83?w=400&h=300&fit=crop&auto=format&q=75" alt="" width="400" height="300" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1681949287382-052ea3954a51?w=400&h=300&fit=crop&auto=format&q=75" alt="" width="400" height="300" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1613835579153-9bfe32e50da6?w=400&h=300&fit=crop&auto=format&q=75" alt="" width="400" height="300" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1603201667141-5a2d4c673378?w=400&h=300&fit=crop&auto=format&q=75" alt="" width="400" height="300" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1681505504714-4ded1bc247e7?w=400&h=300&fit=crop&auto=format&q=75" alt="" width="400" height="300" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1690378820474-b468b8ee64d3?w=400&h=300&fit=crop&auto=format&q=75" alt="" width="400" height="300" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=300&fit=crop&auto=format&q=75" alt="" width="400" height="300" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1590842268333-7035dea1e56c?w=400&h=300&fit=crop&auto=format&q=75" alt="" width="400" height="300" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1681505515542-3a6c4ef756c4?w=400&h=300&fit=crop&auto=format&q=75" alt="" width="400" height="300" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&h=300&fit=crop&auto=format&q=75" alt="" width="400" height="300" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1532622785990-d2c36a76f5a6?w=400&h=300&fit=crop&auto=format&q=75" alt="" width="400" height="300" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1681505526188-b05e68c77582?w=400&h=300&fit=crop&auto=format&q=75" alt="" width="400" height="300" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1564457461758-8ff96e439e83?w=400&h=300&fit=crop&auto=format&q=75" alt="" width="400" height="300" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1681949287382-052ea3954a51?w=400&h=300&fit=crop&auto=format&q=75" alt="" width="400" height="300" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1613835579153-9bfe32e50da6?w=400&h=300&fit=crop&auto=format&q=75" alt="" width="400" height="300" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1603201667141-5a2d4c673378?w=400&h=300&fit=crop&auto=format&q=75" alt="" width="400" height="300" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1681505504714-4ded1bc247e7?w=400&h=300&fit=crop&auto=format&q=75" alt="" width="400" height="300" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1690378820474-b468b8ee64d3?w=400&h=300&fit=crop&auto=format&q=75" alt="" width="400" height="300" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=300&fit=crop&auto=format&q=75" alt="" width="400" height="300" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1590842268333-7035dea1e56c?w=400&h=300&fit=crop&auto=format&q=75" alt="" width="400" height="300" loading="lazy">
     </div>
     <div class="wrap">
       <h2 id="h-contact">Book your AI Systems Audit</h2>
@@ -543,7 +557,7 @@ footer{background:var(--night);color:var(--night-ink);min-height:90svh;padding-b
       </div>
     </div>
     <div class="legal">
-      <p>© 2026 Layerwise. Photographs via Wikimedia Commons: Liwa Desert Dune, Liwa Desert in Abu Dhabi and Liwa Desert Road in Abu Dhabi by JSPhotography2016 (<a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>); Liwa Desert by Jc8136 and Walnut Canyon strata by Jlahorn (<a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener">CC BY-SA 3.0</a>); Liwa Oasis by Xiaotong Gao (CC BY-SA 3.0); Liwa Oasis and the Rub' al Khali, NASA MODIS (public domain).</p>
+      <p>© 2026 Layerwise. Photographs from <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>, used under the Unsplash License. People shown are not Layerwise clients or staff.</p>
       <a href="#top">Back to top</a>
     </div>
   </div>
@@ -595,6 +609,10 @@ footer{background:var(--night);color:var(--night-ink);min-height:90svh;padding-b
   }
   render();
 
+  /* pricing: the price stays hidden until asked for */
+  var sp=document.getElementById('showPrice'),pv=document.getElementById('priceVal');
+  sp.addEventListener('click',function(){pv.hidden=false;sp.hidden=true;sp.setAttribute('aria-expanded','true');pv.setAttribute('tabindex','-1');pv.focus()});
+
   /* contact: opens the visitor's email app with the plan filled in */
   var f=document.getElementById('lead'),msg=document.getElementById('msg');
   f.addEventListener('submit',function(e){
@@ -617,10 +635,10 @@ footer{background:var(--night);color:var(--night-ink);min-height:90svh;padding-b
   /* safety deck: cards fold into spines as the page scrolls */
   var wrap=document.getElementById('deckWrap'),deck=document.getElementById('deck'),cards=[].slice.call(deck.children),active=0,mq=matchMedia('(min-width:900px)');
   function layout(){
-    if(!mq.matches){cards.forEach(function(c){c.style.width=''});return}
-    var W=deck.clientWidth,cw=Math.min(620,W*0.55),sl=Math.max(36,Math.min(120,(W-cw)/(cards.length-1)));
+    if(!mq.matches){cards.forEach(function(c){c.style.width='';c.classList.remove('spine')});return}
+    var W=deck.clientWidth,cw=Math.min(620,W*0.5),sl=Math.max(24,Math.floor((W-cw)/(cards.length-1)));
     deck.style.setProperty('--cw',cw+'px');
-    cards.forEach(function(c,i){c.style.width=(i<active?sl:i===active?cw:0)+'px';c.setAttribute('aria-expanded',String(i===active))});
+    cards.forEach(function(c,i){c.style.width=(i===active?cw:sl)+'px';c.classList.toggle('spine',i!==active);c.setAttribute('aria-expanded',String(i===active))});
   }
   function onScroll(){
     if(!mq.matches)return;
