@@ -330,7 +330,7 @@ p{text-wrap:pretty}
 
 /* footer */
 footer{background:var(--strong);color:var(--strong-ink);padding-block:clamp(48px,6vw,80px) 28px;overflow:hidden}
-.big{font-size:min(17rem,18.4vw);font-weight:800;letter-spacing:-0.06em;line-height:.8;white-space:nowrap;margin-bottom:-0.12em}
+.big{font-size:min(20rem,22vw);font-weight:800;letter-spacing:-0.06em;line-height:.8;white-space:nowrap;margin-bottom:-0.12em}
 .f-row{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:40px 24px;margin-top:72px}
 .places{grid-column:1/6;display:grid;gap:6px}
 .places a{font-size:clamp(1.5rem,1rem + 1.3vw,2.25rem);font-weight:500;color:#e46bc6;text-decoration:none;line-height:1.15;overflow-wrap:anywhere}
@@ -342,7 +342,7 @@ footer{background:var(--strong);color:var(--strong-ink);padding-block:clamp(48px
 .f-links button{background:none;border:0;padding:0;cursor:pointer;text-decoration:underline;font-size:15px}
 .legal{margin-top:96px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px;font-size:var(--s-small);color:var(--strong-soft)}
 .legal p{max-width:70ch}
-@media (max-width:719px){.places,.f-links{grid-column:1/-1}.f-links{grid-template-columns:1fr 1fr}.big{font-size:19.5vw}}
+@media (max-width:719px){.places,.f-links{grid-column:1/-1}.f-links{grid-template-columns:1fr 1fr}}
 
 /* motion: everything is visible without script; script adds the entrances */
 .js .hero h1 .ln>span{transform:translateY(105%);transition:transform .9s var(--ease)}
@@ -744,7 +744,7 @@ footer{background:var(--strong);color:var(--strong-ink);padding-block:clamp(48px
 
   /* entrances: content shows even if this never runs */
   var hero=document.querySelector('.hero');
-  requestAnimationFrame(function(){requestAnimationFrame(function(){hero.classList.add('in')})});
+  requestAnimationFrame(function(){requestAnimationFrame(function(){hero.classList.add('in')})});setTimeout(function(){hero.classList.add('in')},120);
   var items=[].slice.call(document.querySelectorAll('[data-rise]'));
   if('IntersectionObserver' in window){
     var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.08,rootMargin:'0px 0px -6% 0px'});
