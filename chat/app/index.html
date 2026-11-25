@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Layerwise Chat · Full product demo</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&display=swap">
+<link rel="stylesheet" href="styles.css">
+<style>
+.demobar{height:40px;background:#ffc013;color:#0a0a0a;display:flex;align-items:center;gap:14px;padding:0 16px;font-weight:700;font-size:14px;position:relative;z-index:30}
+.demobar a,.demobar button{color:#0a0a0a;font:inherit;font-weight:700;background:none;border:0;cursor:pointer;text-decoration:underline;padding:0}
+.demobar .sp{flex:1}.demobar .cta{background:#0a0a0a;color:#fff;text-decoration:none;padding:6px 12px}
+.app,.inbox,.fb{height:calc(100vh - 40px)!important}
+.tchat{bottom:16px}
+@media(max-width:800px){.app{grid-template-columns:1fr}.side{flex-direction:row;overflow-x:auto;padding:8px;gap:4px}.side .brand,.side .grow{display:none}.side a{white-space:nowrap}.app{grid-template-rows:auto 1fr}
+ .inbox{grid-template-columns:1fr}.inbox .info,.inbox .list{display:none}.fb{grid-template-columns:1fr}.fb .panel{display:none}.fb-top{right:0}.demobar{font-size:12px;gap:8px}.demobar .hide-sm{display:none}}
+</style>
+</head>
+<body>
+<div class="demobar" role="status"><span>🟡 Demo mode: sample data, nothing is sent to any platform</span><span class="sp"></span><button type="button" onclick="LW_DEMO.reset()">Reset demo</button><a class="hide-sm" href="../">← Back to website</a><a class="cta" href="../#contact">Book a live demo</a></div>
+<div id="root"></div>
+<script src="mock-api.js"></script>
+<script src="app.js"></script>
+<script src="builder.js"></script>
+<script>if(!location.hash||location.hash==='#/login')location.hash='#/dashboard';</script>
+</body>
+</html>

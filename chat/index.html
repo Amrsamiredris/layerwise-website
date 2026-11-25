@@ -134,13 +134,42 @@ form.cf textarea{min-height:110px;resize:vertical}
 @media(max-width:600px){form.cf{grid-template-columns:1fr}}
 footer{padding:40px 0;color:var(--soft);font-size:.95rem}footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 :focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.dtabs{display:flex;flex-wrap:wrap;gap:0;margin:0 0 16px;border:2px solid var(--ink);width:max-content;max-width:100%}
+.dtabs button{border:0;border-inline-end:2px solid var(--ink);background:#fff;padding:12px 18px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:8px}
+.dtabs button:last-child{border-inline-end:0}
+.dtabs button::before{content:"";width:10px;height:10px;background:var(--c);display:inline-block}
+.dtabs button.on{background:var(--ink);color:#fff}
+@media(max-width:700px){.dtabs{width:100%}.dtabs button{flex:1 1 33%;justify-content:center;padding:10px 8px;font-size:.9rem;border-bottom:2px solid var(--ink)}}
+.scen{font-weight:600;color:var(--soft)}.fullbtn{margin-inline-start:auto;padding:8px 14px}
+@media(max-width:700px){.fullbtn{margin-inline-start:0}}
+.cbox[hidden]{display:none}
+.qr{display:flex;flex-wrap:wrap;gap:6px;padding:0 12px 8px;justify-content:flex-end}
+.qr button{border:1.5px solid currentColor;background:#fff;border-radius:18px;padding:6px 12px;font-size:13px;cursor:pointer;color:#0084ff;font-weight:600}
+.cbox button#chatSend{color:#0095f6;font-size:18px}
+/* entry screens */
+.entry-ad{flex:1;display:flex;flex-direction:column}
+.ad-media{height:240px;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:800;font-size:26px;padding:20px;flex:none}
+.ad-body{padding:14px;font-size:14px;color:#333;flex:1}.ad-body b{display:block;font-size:16px;margin-bottom:4px;color:#111}
+.ad-cta{margin:0 14px 14px;padding:12px;text-align:center;font-weight:700;color:#fff;border:0;cursor:pointer;border-radius:8px;font-size:15px}
+.site{flex:1;position:relative;background:#f7f7f9;display:flex;flex-direction:column}
+.site-nav{height:42px;background:#fff;border-bottom:1px solid #eee;display:flex;align-items:center;padding:0 12px;font-weight:800;gap:6px}
+.site-hero{padding:24px 16px;font-size:22px;font-weight:800;line-height:1.15}.site-hero small{display:block;font-size:14px;font-weight:500;color:#555;margin-top:8px}
+.site-fab{position:absolute;bottom:16px;inset-inline-end:16px;width:56px;height:56px;border-radius:50%;background:var(--acc);color:#fff;border:0;font-size:24px;cursor:pointer;box-shadow:0 6px 18px #0003}
+.site-tip{position:absolute;bottom:82px;inset-inline-end:16px;background:#fff;border:1px solid #ddd;border-radius:12px;padding:8px 12px;font-size:13px;max-width:200px}
+.fbpost .ph-top .av{background:#0866ff}
+/* platform themes for the chat phone */
+.th-fb .bub.me{background:#0866ff}.th-fb .bub .bt,.th-fb .qr button{color:#0866ff}
+.th-wa .dm{background:#efeae2}.th-wa .bub.bot{background:#fff}.th-wa .bub.me{background:#d9fdd3;color:#111}.th-wa .bub .bt{color:#00a884;border-color:#e3e3e3}.th-wa .qr button{color:#00a884}.th-wa .ph-top{background:#008069;color:#fff}.th-wa #chatSend{color:#00a884}
+.th-tg .dm{background:#cfe3ef}.th-tg .bub.bot{background:#fff}.th-tg .bub.me{background:#effdde;color:#111}.th-tg .qr{flex-direction:column;align-items:stretch}.th-tg .qr button{border-radius:8px;background:#5d97c8;color:#fff;border:0}.th-tg .ph-top{background:#517da2;color:#fff}.th-tg #chatSend{color:#517da2}
+.th-web .bub.me{background:var(--acc)}.th-web .bub .bt,.th-web .qr button{color:var(--acc)}.th-web .ph-top{background:var(--acc);color:#fff}.th-web #chatSend{color:var(--acc)}
+.sysmsg{align-self:center;font-size:12px;color:#667;background:#ffffffb0;padding:4px 10px;border-radius:10px}
 </style>
 </head>
 <body>
 <header>
   <div class="wrap">
     <a class="word" dir="ltr" href="/chat/" aria-label="Layerwise Chat home"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="2" y="26" width="24" height="9" fill="currentColor"/><rect x="8" y="15.5" width="24" height="9" fill="var(--sand)" stroke="currentColor" stroke-width="2"/><rect x="14" y="5" width="24" height="9" fill="var(--acc)"/></svg>layerwise <b>chat</b></a>
-    <nav class="main" aria-label="Main"><a href="#demo" data-i="nav_demo">Live demo</a><a href="#features" data-i="nav_feat">Features</a><a href="#compare" data-i="nav_cmp">vs ManyChat</a><a href="#pricing" data-i="nav_price">Pricing</a><a href="#faq" data-i="nav_faq">FAQ</a></nav>
+    <nav class="main" aria-label="Main"><a href="#demo" data-i="nav_demo">Live demo</a><a href="/chat/app/" data-i="nav_full">Full demo</a><a href="#features" data-i="nav_feat">Features</a><a href="#compare" data-i="nav_cmp">vs ManyChat</a><a href="#pricing" data-i="nav_price">Pricing</a><a href="#faq" data-i="nav_faq">FAQ</a></nav>
     <div class="hdr-r"><button class="lang" id="langBtn" type="button" aria-label="Switch language">عربي</button><a class="btn btn-acc hide-sm" href="#contact" data-i="cta_demo">Book a demo</a></div>
   </div>
 </header>
@@ -151,7 +180,7 @@ footer{padding:40px 0;color:var(--soft);font-size:.95rem}footer .wrap{display:fl
     <div class="eyebrow" data-i="hero_eye">Chat automation · by Layerwise</div>
     <h1 data-i="hero_h">Turn comments into <em>conversations</em>. Pay a flat price.</h1>
     <p class="lead" data-i="hero_p">Comment-to-DM, flows, live chat, broadcasts and AI replies for Instagram, WhatsApp, Messenger, Telegram and your website. No per-contact pricing — your bill stays the same when a Reel goes viral.</p>
-    <div class="ctas"><a class="btn btn-acc" href="#demo" data-i="hero_try">Try the live demo ↓</a><a class="btn" href="#pricing" data-i="hero_price">See pricing</a><a class="btn" id="signupBtn" href="#contact" data-i="hero_signup">Start free setup call</a></div>
+    <div class="ctas"><a class="btn btn-acc" href="#demo" data-i="hero_try">Try the live demo ↓</a><a class="btn btn-ink" href="/chat/app/" data-i="hero_full">Open full demo ↗</a><a class="btn" href="#pricing" data-i="hero_price">See pricing</a><a class="btn" id="signupBtn" href="#contact" data-i="hero_signup">Start free setup call</a></div>
   </div>
   <div class="blocks" aria-hidden="true">
     <div style="background:var(--sky)"><span class="n">5</span><span class="l" data-i="b_ch">channels</span></div>
@@ -164,32 +193,28 @@ footer{padding:40px 0;color:var(--soft);font-size:.95rem}footer .wrap{display:fl
 <!-- DEMO -->
 <section id="demo"><div class="wrap">
   <div class="eyebrow" data-i="demo_eye">Interactive demo · simulated</div>
-  <h2 data-i="demo_h">Comment on the post. Watch what happens.</h2>
-  <p class="sub" data-i="demo_p">This is a simulation of a real Layerwise Chat automation. Type <b>GUIDE</b> (or دليل) as a comment. You'll see the public reply, the DM your follower receives, and every step the bot runs behind the scenes.</p>
-  <div class="opts"><label><input type="checkbox" id="follows" checked> <span data-i="opt_follow">The commenter follows the account</span></label><button class="reset" id="resetBtn" type="button" data-i="opt_reset">↺ Reset demo</button></div>
+  <h2 data-i="demo_h">Pick your platform. Watch the bot work.</h2>
+  <p class="sub" data-i="demo_p">A simulation of real Layerwise Chat automations, one for each channel. Try it like your customers would: the middle phone shows what they receive, the dark panel shows every step the bot runs.</p>
+  <div class="dtabs" role="tablist" aria-label="Platform">
+    <button role="tab" data-plat="ig" class="on" style="--c:#d6249f">Instagram</button>
+    <button role="tab" data-plat="fb" style="--c:#0866ff">Facebook · Messenger</button>
+    <button role="tab" data-plat="wa" style="--c:#1fa855">WhatsApp</button>
+    <button role="tab" data-plat="tg" style="--c:#229ed9">Telegram</button>
+    <button role="tab" data-plat="web" style="--c:#0a0a0a" data-i="tab_web">Website chat</button>
+  </div>
+  <div class="opts"><span class="scen" id="scen"></span><label id="followOpt"><input type="checkbox" id="follows" checked> <span data-i="opt_follow">The commenter follows the account</span></label><button class="reset" id="resetBtn" type="button" data-i="opt_reset">↺ Reset demo</button><a class="btn btn-ink fullbtn" href="/chat/app/" data-i="full_demo">Open the full platform demo ↗</a></div>
   <div class="demo">
-    <div class="phone" aria-label="Instagram post simulation">
-      <div class="ph-top"><div class="av"></div><span>yourbrand</span><span style="margin-inline-start:auto;color:#8e8e8e">•••</span></div>
-      <div class="post-img"><span data-i="post_title">FREE ROUTE PLANNER ✨</span><small data-i="post_sub">Comment GUIDE to get it in your DMs</small></div>
-      <div class="acts" aria-hidden="true">♡ 💬 ➤</div>
-      <div class="cap"><b>yourbrand</b> <span data-i="post_cap">Comment GUIDE and I'll send you the free planner 👇</span></div>
-      <div class="comments" id="comments" aria-live="polite"></div>
-      <div class="chips"><button type="button" data-c="GUIDE">GUIDE</button><button type="button" data-c="دليل">دليل</button><button type="button" data-c="love this 😍">love this 😍</button></div>
-      <form class="cbox" id="cform"><div class="av u" style="width:28px;height:28px"></div><input id="cinput" maxlength="120" autocomplete="off" placeholder="Add a comment…" data-ph="ph_comment" aria-label="Comment"><button data-i="post_btn">Post</button></form>
-    </div>
-    <div class="phone" aria-label="Direct messages simulation">
-      <div class="ph-top"><span>‹</span><div class="av"></div><span>yourbrand</span><span style="margin-inline-start:auto;font-size:12px;color:#8e8e8e" data-i="dm_label">Your follower's DMs</span></div>
-      <div class="dm" id="dm" aria-live="polite"><div class="empty-dm" id="dmEmpty" data-i="dm_empty">No messages yet.<br>Comment on the post to trigger the automation.</div></div>
+    <div class="phone" id="entry" aria-label="Where the conversation starts"></div>
+    <div class="phone" id="chatPhone" aria-label="What your customer sees">
+      <div class="ph-top" id="chatTop"></div>
+      <div class="dm" id="dm" aria-live="polite"></div>
+      <div class="qr" id="qr"></div>
+      <form class="cbox" id="chatForm" hidden><input id="chatInput" maxlength="160" autocomplete="off" aria-label="Message"><button id="chatSend">➤</button></form>
     </div>
     <div class="flowcol" aria-label="Behind the scenes">
       <h3><span data-i="bts">Behind the scenes</span><small data-i="bts_sub">what Layerwise Chat runs</small></h3>
-      <div class="fnode" data-n="trigger"><b data-i="n1b">Trigger</b><span data-i="n1">Comment contains “guide” / “دليل” on this post</span></div>
-      <div class="fnode" data-n="reply"><b data-i="n2b">Public reply</b><span data-i="n2">Random reply under the comment</span></div>
-      <div class="fnode" data-n="dm"><b data-i="n3b">Private reply</b><span data-i="n3">DM with a button — waits for the tap</span></div>
-      <div class="fnode" data-n="gate"><b data-i="n4b">Condition</b><span data-i="n4">Follows the account?</span></div>
-      <div class="fnode" data-n="link"><b data-i="n5b">Message</b><span data-i="n5">Send the link</span></div>
-      <div class="fnode" data-n="tag"><b data-i="n6b">Action</b><span data-i="n6">Tag “lead-magnet” · add to CRM · start 3-day sequence</span></div>
-      <div class="log" id="log" aria-live="polite"><div>$ waiting for webhook…</div></div>
+      <div id="nodes"></div>
+      <div class="log" id="log" aria-live="polite"></div>
     </div>
   </div>
 </div></section>
@@ -300,12 +325,13 @@ const AR_CUR = {AED:'د.إ ',SAR:'ر.س ',QAR:'ر.ق ',KWD:'د.ك ',EGP:'ج.م '
 
 // ---------- Arabic copy (English lives in the HTML) ----------
 const AR = {
+ nav_full:'العرض الكامل',hero_full:'افتح العرض الكامل ↗',tab_web:'دردشة الموقع',full_demo:'افتح العرض الكامل للمنصة ↗',
  nav_demo:'جرّب العرض',nav_feat:'المزايا',nav_cmp:'مقارنة بـ ManyChat',nav_price:'الأسعار',nav_faq:'أسئلة',cta_demo:'احجز عرضاً',
  hero_eye:'أتمتة المحادثات · من Layerwise',hero_h:'حوّل التعليقات إلى <em>محادثات</em>. بسعر ثابت.',
  hero_p:'رسائل تلقائية من التعليقات، مسارات محادثة، دردشة مباشرة، رسائل جماعية وردود ذكاء اصطناعي لإنستغرام وواتساب وماسنجر وتيليجرام وموقعك. بدون تسعير لكل جهة اتصال — فاتورتك لا تتغير عندما ينتشر الريل.',
  hero_try:'جرّب العرض التفاعلي ↓',hero_price:'شاهد الأسعار',hero_signup:'احجز مكالمة إعداد مجانية',b_ch:'قنوات',b_fee:'رسوم لكل جهة اتصال',b_steps:'أنواع خطوات',b_lang:'ثنائي اللغة',
  demo_eye:'عرض تفاعلي · محاكاة',demo_h:'علّق على المنشور. وشاهد ما يحدث.',
- demo_p:'هذه محاكاة لأتمتة حقيقية في Layerwise Chat. اكتب <b>دليل</b> (أو GUIDE) كتعليق، وسترى الرد العام، والرسالة الخاصة التي تصل لمتابعك، وكل خطوة ينفذها البوت خلف الكواليس.',
+ demo_p:'محاكاة لأتمتة حقيقية في Layerwise Chat، لكل قناة سيناريو. جرّبها كما يفعل عملاؤك: الهاتف الأوسط يعرض ما يصلهم، واللوحة الداكنة تعرض كل خطوة ينفذها البوت.',
  opt_follow:'المعلِّق يتابع الحساب',opt_reset:'↺ إعادة العرض',post_title:'مخطط الرحلات المجاني ✨',post_sub:'علّق «دليل» لتصلك في الرسائل',post_cap:'علّق «دليل» وسأرسل لك المخطط مجاناً 👇',ph_comment:'أضف تعليقاً…',post_btn:'نشر',
  dm_label:'رسائل متابعك',dm_empty:'لا توجد رسائل بعد.<br>علّق على المنشور لتشغيل الأتمتة.',bts:'خلف الكواليس',bts_sub:'ما ينفذه Layerwise Chat',
  n1b:'المُحفِّز',n1:'التعليق يحتوي «دليل» / «guide» على هذا المنشور',n2b:'رد عام',n2:'رد عشوائي تحت التعليق',n3b:'رد خاص',n3:'رسالة بزر — تنتظر الضغط',n4b:'شرط',n4:'هل يتابع الحساب؟',n5b:'رسالة',n5:'إرسال الرابط',n6b:'إجراء',n6:'وسم «lead-magnet» · إضافة للعملاء · بدء تسلسل 3 أيام',
@@ -356,7 +382,7 @@ function applyLang(){
   document.title = lang === 'ar' ? 'Layerwise Chat · أتمتة إنستغرام وواتساب بدون تسعير لكل جهة اتصال' : 'Layerwise Chat · Instagram & WhatsApp automation without per-contact pricing';
   renderPrices(); try{localStorage.setItem('lw_lang',lang)}catch(e){}
 }
-document.getElementById('langBtn').onclick = () => { lang = lang === 'ar' ? 'en' : 'ar'; applyLang(); };
+document.getElementById('langBtn').onclick = () => { lang = lang === 'ar' ? 'en' : 'ar'; applyLang(); if (window.LW_DEMO_SETUP) LW_DEMO_SETUP(); };
 
 // ---------- pricing localization ----------
 function detectMarket(){
@@ -399,64 +425,151 @@ document.getElementById('cf').addEventListener('submit', async e => {
   } catch (err) { st.className = 'status err'; st.textContent = (lang === 'ar' ? 'تعذر الإرسال. راسلنا على ' : 'Could not send. Email us at ') + 'amrsamiredris@gmail.com'; }
 });
 
-// ---------- interactive demo (simulation only — no messages are sent) ----------
-const $ = s => document.querySelector(s);
-const wait = ms => new Promise(r => setTimeout(r, ms));
-let running = false, waitingTap = null, runId = 0;
-const KEYWORDS = ['guide','دليل'];
-const now = () => new Date().toLocaleTimeString('en-GB');
-function log(t){ const d = document.createElement('div'); d.textContent = `[${now()}] ${t}`; $('#log').appendChild(d); $('#log').scrollTop = 1e9; }
-function node(n, cls){ const el = document.querySelector(`.fnode[data-n="${n}"]`); el.classList.remove('on','done','fail'); if (cls) el.classList.add(cls); }
-function addComment(user, text, reply){ const d = document.createElement('div'); d.className = 'cm' + (reply ? ' reply' : '');
-  d.innerHTML = `<div class="av ${reply?'':'u'}"></div><div><b></b><span></span><span class="t">${MSG[lang].now}</span></div>`; d.querySelector('b').textContent = user; d.querySelector('span').textContent = text;
-  $('#comments').appendChild(d); $('#comments').scrollTop = 1e9; }
-function bubble(cls, text, btn){ $('#dmEmpty')?.remove(); const d = document.createElement('div'); d.className = 'bub ' + cls; d.textContent = text;
-  if (btn){ const b = document.createElement('button'); b.className = 'bt'; b.type = 'button'; b.textContent = btn.title; if (btn.url) b.onclick = () => log('→ opens https://yourbrand.com/planner'); else b.onclick = () => { if (waitingTap) { b.disabled = true; const f = waitingTap; waitingTap = null; f(btn.title); } }; d.appendChild(b); }
-  $('#dm').appendChild(d); $('#dm').scrollTop = 1e9; return d; }
-async function typing(ms){ const t = document.createElement('div'); t.className = 'typing'; t.innerHTML = '<i></i><i></i><i></i>'; $('#dm').appendChild(t); $('#dm').scrollTop = 1e9; await wait(ms); t.remove(); }
-function resetDemo(){ runId++; running = false; waitingTap = null; $('#comments').innerHTML = ''; $('#dm').innerHTML = `<div class="empty-dm" id="dmEmpty">${lang==='ar'?AR.dm_empty:EN.dm_empty}</div>`;
-  document.querySelectorAll('.fnode').forEach(n => n.classList.remove('on','done','fail')); $('#log').innerHTML = '<div>$ waiting for webhook…</div>'; }
-$('#resetBtn').onclick = resetDemo;
-document.querySelectorAll('.chips button').forEach(b => b.onclick = () => { $('#cinput').value = b.dataset.c; $('#cform').requestSubmit(); });
-$('#cform').addEventListener('submit', async e => {
-  e.preventDefault(); const text = $('#cinput').value.trim(); if (!text) return; $('#cinput').value = '';
-  const my = ++runId; const M = MSG[lang]; const alive = () => my === runId;
-  addComment('sara.24', text); log(`webhook: instagram.comments  from=sara.24  text="${text}"`);
-  node('trigger','on'); await wait(600); if (!alive()) return;
-  const hit = KEYWORDS.some(k => text.toLowerCase().includes(k));
-  if (!hit) { node('trigger','fail'); log('no trigger matched → ignored'); addComment('·', M.nomatch, true); return; }
-  if (running) { log('contact already in this flow → skipped (no duplicate DMs)'); node('trigger','done'); return; }
-  running = true; node('trigger','done'); log('trigger matched: "Comment → DM (follow gate)" priority=10');
-  node('reply','on'); await wait(700); if (!alive()) return;
-  const pr = M.public[Math.floor(Math.random()*M.public.length)]; addComment('yourbrand', pr, true); node('reply','done'); log(`POST /{comment_id}/replies  "${pr}"`);
-  node('dm','on'); await typing(900); if (!alive()) return;
-  bubble('bot', M.dm1(lang === 'ar' ? 'سارة' : 'Sara'), { title: M.btn }); log('POST /me/messages recipient={comment_id} (private reply)'); log('state: waiting for button tap…');
-  const ask = async () => {
-    const title = await new Promise(r => waitingTap = r); if (!alive()) return;
-    bubble('me', title); node('dm','done'); log(`postback: "${title}"`);
-    node('gate','on'); await wait(800); if (!alive()) return;
-    const follows = $('#follows').checked; log(`GET /{igsid}?fields=is_user_follow_business → ${follows}`);
-    if (!follows) { node('gate','fail'); await typing(700); if (!alive()) return; bubble('bot', M.notf, { title: M.retry }); log('branch: NO → follow prompt, waiting…');
-      const t2 = await new Promise(r => waitingTap = r); if (!alive()) return; bubble('me', t2); log(`postback: "${t2}"`); node('gate','on'); await wait(800); if (!alive()) return;
-      const f2 = $('#follows').checked; log(`GET /{igsid}?fields=is_user_follow_business → ${f2}`);
-      if (!f2) { node('gate','fail'); bubble('bot', M.notf, { title: M.retry }); log('still not following (tick the checkbox above to simulate a follow)');
-        return ask2(); }
-    }
-    return deliver();
-  };
-  const ask2 = async () => { const t = await new Promise(r => waitingTap = r); if (!alive()) return; bubble('me', t); node('gate','on'); await wait(700); if (!alive()) return;
-    const f = $('#follows').checked; log(`GET /{igsid}?fields=is_user_follow_business → ${f}`); if (!f) { node('gate','fail'); bubble('bot', M.notf, { title: M.retry }); return ask2(); } return deliver(); };
-  const deliver = async () => {
-    node('gate','done'); log('branch: YES'); node('link','on'); await typing(800); if (!alive()) return;
-    bubble('bot', M.dm2, { title: M.link, url: true }); node('link','done'); log('message sent: link button');
-    node('tag','on'); await wait(700); if (!alive()) return; node('tag','done');
-    log('contact.tags += "lead-magnet"'); log('sequence "Lead nurture (3 days)" → enrolled'); log(M.seq); running = false;
-  };
-  ask();
-});
-
 document.getElementById('yr').textContent = new Date().getFullYear();
 applyLang();
+</script>
+<script>
+// ---------- multi-platform interactive demo (simulation only — no messages are sent) ----------
+(function(){
+const $ = s => document.querySelector(s);
+const L = o => (typeof o === 'string' ? o : (o[lang] || o.en));
+const wait = ms => new Promise(r => setTimeout(r, ms));
+const T = {
+ scen:{ig:{en:'Scenario: comment-to-DM with a follow gate',ar:'السيناريو: تعليق ← رسالة خاصة مع شرط المتابعة'},fb:{en:'Scenario: post comment → Messenger menu',ar:'السيناريو: تعليق على منشور ← قائمة في ماسنجر'},wa:{en:'Scenario: click-to-WhatsApp ad → lead capture',ar:'السيناريو: إعلان «راسلنا على واتساب» ← جمع بيانات العميل'},tg:{en:'Scenario: Telegram link → menu & booking',ar:'السيناريو: رابط تيليجرام ← قائمة وحجز'},web:{en:'Scenario: website chat → AI answers → human handover',ar:'السيناريو: دردشة الموقع ← رد ذكاء اصطناعي ← تحويل لموظف'}},
+ now:{en:'now',ar:'الآن'},
+ nomatch:{en:'No trigger matched — the bot stays quiet.',ar:'لا يوجد محفز مطابق — البوت لا يرد.'},
+ // instagram
+ ig_title:{en:'FREE ROUTE PLANNER ✨',ar:'مخطط الرحلات المجاني ✨'},ig_sub:{en:'Comment GUIDE to get it in your DMs',ar:'علّق «دليل» لتصلك في الرسائل'},ig_cap:{en:"Comment GUIDE and I'll send you the free planner 👇",ar:'علّق «دليل» وسأرسل لك المخطط مجاناً 👇'},
+ ig_pub:{en:['Sent! Check your DMs 📩','Done ✅ check your inbox'],ar:['تم الإرسال! شوف رسائلك 📩','تم ✅ راجع الخاص']},
+ ig_dm1:{en:"Hey Sara! 👋 Thanks for the comment. Tap below and I'll send you the planner.",ar:'أهلاً سارة! 👋 شكراً على التعليق. اضغطي بالأسفل وسأرسل لك المخطط.'},ig_btn:{en:'Send me the planner',ar:'أرسل لي المخطط'},
+ ig_notf:{en:'This one is for followers only 🙏 Follow @yourbrand, then tap below.',ar:'هذا المحتوى للمتابعين فقط 🙏 تابعي ‎@yourbrand ثم اضغطي بالأسفل.'},ig_retry:{en:"I'm following ✅",ar:'تابعت ✅'},
+ ig_link:{en:'Here you go 🎁',ar:'تفضلي 🎁'},open:{en:'Open the planner ↗',ar:'افتح المخطط ↗'},
+ ph_comment:{en:'Add a comment…',ar:'أضف تعليقاً…'},post:{en:'Post',ar:'نشر'},
+ // facebook
+ fb_title:{en:'Weekend workshop 🎨',ar:'ورشة نهاية الأسبوع 🎨'},fb_sub:{en:'Comment INFO for dates & prices',ar:'علّق «معلومات» للمواعيد والأسعار'},fb_cap:{en:'Spots are limited — comment INFO and we’ll message you the details.',ar:'الأماكن محدودة — علّق «معلومات» وسنرسل لك التفاصيل.'},
+ fb_pub:{en:['Sent you a message 💬'],ar:['أرسلنا لك رسالة 💬']},
+ fb_dm1:{en:'Hi Omar! 👋 Thanks for asking about the workshop. What would you like to know?',ar:'أهلاً عمر! 👋 شكراً لسؤالك عن الورشة. ماذا تحب أن تعرف؟'},
+ fb_q:{en:['Dates','Price','Book a seat'],ar:['المواعيد','السعر','احجز مقعد']},
+ fb_a:{en:['Saturday 6 Dec and Sunday 7 Dec, 10am–1pm in Dubai Design District.','AED 250 per person, materials included.','Great! Tap below to pick your seat 🎟️'],ar:['السبت 6 ديسمبر والأحد 7 ديسمبر، 10 صباحاً – 1 ظهراً في حي دبي للتصميم.','250 درهم للشخص شاملة الأدوات.','ممتاز! اضغط بالأسفل لاختيار مقعدك 🎟️']},
+ fb_book:{en:'Choose a seat ↗',ar:'اختر مقعدك ↗'},fb_more:{en:'Anything else?',ar:'هل تحتاج شيئاً آخر؟'},
+ // whatsapp
+ wa_title:{en:'10% OFF your first order',ar:'خصم 10٪ على أول طلب'},wa_body:{en:'Sponsored · Message us on WhatsApp and get your code instantly.',ar:'إعلان ممول · راسلنا على واتساب واحصل على الكود فوراً.'},wa_cta:{en:'Send WhatsApp message',ar:'أرسل رسالة واتساب'},
+ wa_start:{en:'Hi! I want the 10% code',ar:'مرحباً! أريد كود الخصم 10٪'},
+ wa_1:{en:'Welcome to Yourbrand 👋 Your code is on its way. What’s your email so we can send the receipt?',ar:'أهلاً بك في Yourbrand 👋 الكود في الطريق. ما بريدك الإلكتروني لنرسل لك الإيصال؟'},
+ wa_bad:{en:'Hmm, that email doesn’t look right. Try again?',ar:'يبدو أن البريد غير صحيح. حاول مرة أخرى؟'},
+ wa_2:{en:'Thanks! 🎉 Your code: WELCOME10\nWhat are you shopping for?',ar:'شكراً! 🎉 كودك: WELCOME10\nماذا تبحث أن تشتري؟'},
+ wa_q:{en:['Skincare','Fragrance','Talk to sales'],ar:['العناية بالبشرة','العطور','تحدث مع المبيعات']},
+ wa_3:{en:'Here are our best-sellers for you 👇',ar:'إليك الأكثر مبيعاً لك 👇'},wa_cat:{en:'View catalogue ↗',ar:'عرض الكتالوج ↗'},wa_sales:{en:'Mona from our sales team will reply here in a few minutes 👩‍💼',ar:'منى من فريق المبيعات سترد هنا خلال دقائق 👩‍💼'},
+ ph_wa:{en:'Type your email…',ar:'اكتب بريدك…'},
+ // telegram
+ tg_title:{en:'Join our Telegram bot',ar:'انضم إلى بوت تيليجرام'},tg_body:{en:'Shared in a newsletter: t.me/yourbrand_bot?start=promo26',ar:'رابط من النشرة البريدية: t.me/yourbrand_bot?start=promo26'},tg_cta:{en:'START',ar:'ابدأ'},
+ tg_1:{en:'Welcome Lina! 🎉 You came from the November promo. What can I help with?',ar:'أهلاً لينا! 🎉 وصلتِ من عرض نوفمبر. كيف أساعدك؟'},
+ tg_q:{en:['💰 Pricing','📅 Book a call','🙋 Talk to a human'],ar:['💰 الأسعار','📅 احجز مكالمة','🙋 تحدث مع موظف']},
+ tg_a:{en:['Plans start at AED 69/month — no per-contact fees.','Pick a slot that works for you:','Got it — someone from the team will answer here shortly.'],ar:['الباقات تبدأ من 69 درهم شهرياً — بدون رسوم لكل جهة اتصال.','اختاري الموعد المناسب:','تم — أحد أفراد الفريق سيرد هنا قريباً.']},
+ tg_book:{en:'Open calendar ↗',ar:'افتح التقويم ↗'},
+ // web
+ web_brand:{en:'Yourbrand',ar:'Yourbrand'},web_hero:{en:'Furniture delivered across the UAE',ar:'أثاث يصلك في كل الإمارات'},web_sub:{en:'Tap the chat bubble ↘',ar:'اضغط على فقاعة الدردشة ↘'},web_tip:{en:'Questions? Ask us 👋',ar:'عندك سؤال؟ اسألنا 👋'},
+ web_1:{en:'Hi! 👋 I’m the Yourbrand assistant. Ask me anything — delivery, returns, opening hours.',ar:'أهلاً! 👋 أنا مساعد Yourbrand. اسألني عن التوصيل أو الإرجاع أو مواعيد العمل.'},
+ web_q:{en:['Do you deliver to Abu Dhabi?','What is your return policy?','human'],ar:['هل توصلون لأبوظبي؟','ما سياسة الإرجاع؟','موظف']},
+ web_ai:{en:['🤖 Yes — free delivery across the UAE within 48 hours, Abu Dhabi included.','🤖 You can return any item within 14 days, unused and in original packaging.','🤖 Good question — I’m not sure. Type “human” and a teammate will join.'],ar:['🤖 نعم — توصيل مجاني لكل الإمارات خلال 48 ساعة، ومنها أبوظبي.','🤖 يمكنك إرجاع أي منتج خلال 14 يوماً بشرط عدم الاستخدام وبالتغليف الأصلي.','🤖 سؤال جيد — لست متأكداً. اكتب «موظف» وسينضم أحد الفريق.']},
+ web_join:{en:'Amr joined the chat',ar:'انضم عمرو إلى المحادثة'},web_agent:{en:'Hi, Amr here 👋 how can I help?',ar:'أهلاً، معك عمرو 👋 كيف أساعدك؟'},ph_web:{en:'Ask a question…',ar:'اكتب سؤالك…'},
+};
+const N = { // behind-the-scenes nodes per platform
+ ig:[['trigger','Trigger','المحفز','Comment contains “guide” / “دليل” on this post','التعليق يحتوي «دليل» / «guide» على هذا المنشور'],['reply','Public reply','رد عام','Random reply under the comment','رد عشوائي تحت التعليق'],['dm','Private reply','رد خاص','DM with a button — waits for the tap','رسالة بزر — تنتظر الضغط'],['gate','Condition','شرط','Follows the account?','هل يتابع الحساب؟'],['link','Message','رسالة','Send the link','إرسال الرابط'],['tag','Action','إجراء','Tag “lead-magnet” · start 3-day sequence','وسم «lead-magnet» · بدء تسلسل 3 أيام']],
+ fb:[['trigger','Trigger','المحفز','Facebook comment contains “info” / “معلومات”','تعليق فيسبوك يحتوي «info» / «معلومات»'],['reply','Public reply','رد عام','Reply under the comment','رد تحت التعليق'],['dm','Messenger','ماسنجر','Private reply with 3 quick replies','رد خاص بـ 3 ردود سريعة'],['answer','Branch','تفرّع','Answer the chosen option','الرد حسب الاختيار'],['tag','Action','إجراء','Tag “workshop-lead” · notify team on booking','وسم «workshop-lead» · إبلاغ الفريق عند الحجز']],
+ wa:[['trigger','Trigger','المحفز','Click-to-WhatsApp ad · first message','إعلان واتساب · أول رسالة'],['ask','Question','سؤال','Ask for email · validate format','طلب البريد · التحقق من الصيغة'],['save','Save','حفظ','Save email to the contact · tag “ad-lead”','حفظ البريد · وسم «ad-lead»'],['menu','Message','رسالة','Code + 3 reply buttons','الكود + 3 أزرار رد'],['route','Route','توجيه','Catalogue link or human takeover','رابط الكتالوج أو تحويل لموظف']],
+ tg:[['trigger','Trigger','المحفز','Ref link ?start=promo26','رابط ?start=promo26'],['tag','Action','إجراء','Tag “promo-nov” · save source','وسم «promo-nov» · حفظ المصدر'],['menu','Message','رسالة','Welcome + inline keyboard','ترحيب + أزرار'],['answer','Branch','تفرّع','Answer the chosen button','الرد حسب الزر'],['route','Route','توجيه','Booking link or human takeover','رابط الحجز أو تحويل لموظف']],
+ web:[['trigger','Trigger','المحفز','Visitor opens the chat widget','الزائر يفتح الدردشة'],['ai','AI reply','رد ذكي','Answer from your knowledge box (your AI key)','إجابة من قاعدة معرفتك (بمفتاحك)'],['exit','Exit keyword','كلمة خروج','“human” ends the AI conversation','«موظف» ينهي محادثة الذكاء الاصطناعي'],['take','Human takeover','تدخل بشري','Bot pauses · agent notified in the inbox','البوت يتوقف · إشعار الموظف في الصندوق']],
+};
+let P='ig', run=0, waiting=null;
+const alive = id => id===run;
+function log(t){ const d=document.createElement('div'); d.textContent=`[${new Date().toLocaleTimeString('en-GB')}] ${t}`; $('#log').appendChild(d); $('#log').scrollTop=1e9; }
+function node(k,cls){ const el=document.querySelector(`#nodes .fnode[data-n="${k}"]`); if(!el)return; el.classList.remove('on','done','fail'); if(cls) el.classList.add(cls); }
+function bubble(cls,text,btns){ const d=document.createElement('div'); d.className=(cls==='sys'?'sysmsg':'bub '+cls); d.textContent=text;
+  (btns||[]).forEach(b=>{ const x=document.createElement('button'); x.type='button'; x.className='bt'; x.textContent=b.title; x.onclick=()=>{ if(b.url){log('→ opens '+b.url);return;} if(waiting){ x.disabled=true; const f=waiting; waiting=null; f(b.title,b.i);} }; d.appendChild(x); });
+  $('#dm').appendChild(d); $('#dm').scrollTop=1e9; }
+function quick(list){ const q=$('#qr'); q.innerHTML=''; list.forEach((t,i)=>{ const b=document.createElement('button'); b.type='button'; b.textContent=t; b.onclick=()=>{ if(waiting){ q.innerHTML=''; const f=waiting; waiting=null; f(t,i);} }; q.appendChild(b); }); }
+async function typing(ms){ const t=document.createElement('div'); t.className='typing'; t.innerHTML='<i></i><i></i><i></i>'; $('#dm').appendChild(t); $('#dm').scrollTop=1e9; await wait(ms); t.remove(); }
+const tap = () => new Promise(r=>waiting=r);
+function comment(user,text,reply){ const d=document.createElement('div'); d.className='cm'+(reply?' reply':''); d.innerHTML=`<div class="av ${reply?'':'u'}"></div><div><b></b> <span></span><span class="t">${L(T.now)}</span></div>`; d.querySelector('b').textContent=user; d.querySelector('span').textContent=text; $('#comments').appendChild(d); $('#comments').scrollTop=1e9; }
+function chatInput(on,ph){ $('#chatForm').hidden=!on; if(on) $('#chatInput').placeholder=L(ph); }
+
+// ---- entry screens ----
+function postEntry(kind){ const ig=kind==='ig'; return `<div class="ph-top"><div class="av"${ig?'':' style="background:#0866ff"'}></div><span>yourbrand</span><span style="margin-inline-start:auto;color:#8e8e8e">${ig?'•••':'Facebook'}</span></div>
+ <div class="post-img" style="${ig?'':'background:linear-gradient(160deg,#dbe7ff,#f1e3b5)'}"><span>${L(T[kind+'_title'])}</span><small>${L(T[kind+'_sub'])}</small></div>
+ <div class="acts" aria-hidden="true">${ig?'♡ 💬 ➤':'👍 💬 ↗'}</div><div class="cap"><b>yourbrand</b> ${L(T[kind+'_cap'])}</div>
+ <div class="comments" id="comments" aria-live="polite"></div>
+ <div class="chips">${(ig?['GUIDE','دليل','love this 😍']:['INFO','معلومات','nice!']).map(c=>`<button type="button" data-c="${c}">${c}</button>`).join('')}</div>
+ <form class="cbox" id="cform"><div class="av u" style="width:28px;height:28px"></div><input id="cinput" maxlength="120" autocomplete="off" placeholder="${L(T.ph_comment)}" aria-label="Comment"><button>${L(T.post)}</button></form>`; }
+function adEntry(kind){ const wa=kind==='wa'; return `<div class="ph-top"><div class="av" style="background:${wa?'#1fa855':'#229ed9'}"></div><span>${wa?'yourbrand · Sponsored':'Newsletter'}</span></div>
+ <div class="entry-ad"><div class="ad-media" style="background:${wa?'linear-gradient(160deg,#d9fdd3,#f1e3b5)':'linear-gradient(160deg,#cfe3ef,#cbe4f2)'}">${L(T[kind+'_title'])}</div>
+ <div class="ad-body">${L(T[kind+'_body'])}</div><button class="ad-cta" id="adCta" type="button" style="background:${wa?'#1fa855':'#229ed9'}">${L(T[kind+'_cta'])}</button></div>`; }
+function webEntry(){ return `<div class="ph-top"><span>🔒 yourbrand.ae</span></div><div class="site"><div class="site-nav">▤ ${L(T.web_brand)}</div><div class="site-hero">${L(T.web_hero)}<small>${L(T.web_sub)}</small></div>
+ <div class="site-tip">${L(T.web_tip)}</div><button class="site-fab" id="adCta" type="button" aria-label="Open chat">💬</button></div>`; }
+const chatHeads = { ig:['yourbrand','Instagram'], fb:['yourbrand','Messenger'], wa:['Yourbrand','WhatsApp Business'], tg:['Yourbrand Bot','bot'], web:['Yourbrand','Website chat'] };
+
+// ---- scenarios ----
+const S = {
+ async ig(id,text){ comment('sara.24',text); log(`webhook instagram.comments from=sara.24 text="${text}"`); node('trigger','on'); await wait(600); if(!alive(id))return;
+  if(!['guide','دليل'].some(k=>text.toLowerCase().includes(k))){ node('trigger','fail'); log('no trigger matched → ignored'); comment('·',L(T.nomatch),true); return; }
+  node('trigger','done'); node('reply','on'); await wait(600); if(!alive(id))return; const pr=L(T.ig_pub)[Math.floor(Math.random()*2)]; comment('yourbrand',pr,true); node('reply','done'); log(`POST /{comment_id}/replies "${pr}"`);
+  node('dm','on'); await typing(800); if(!alive(id))return; bubble('bot',L(T.ig_dm1),[{title:L(T.ig_btn)}]); log('POST /messages recipient={comment_id} (private reply) · waiting for tap');
+  let t=await tap(); if(!alive(id))return; bubble('me',t); node('dm','done'); log(`postback "${t}"`);
+  for(;;){ node('gate','on'); await wait(700); if(!alive(id))return; const f=$('#follows').checked; log(`GET /{igsid}?fields=is_user_follow_business → ${f}`); if(f)break;
+   node('gate','fail'); await typing(600); if(!alive(id))return; bubble('bot',L(T.ig_notf),[{title:L(T.ig_retry)}]); log('branch NO → ask to follow (tick the checkbox to simulate a follow)'); t=await tap(); if(!alive(id))return; bubble('me',t); }
+  node('gate','done'); node('link','on'); await typing(700); if(!alive(id))return; bubble('bot',L(T.ig_link),[{title:L(T.open),url:'https://yourbrand.com/planner'}]); node('link','done');
+  node('tag','on'); await wait(500); node('tag','done'); log('contact.tags += "lead-magnet" · sequence "Lead nurture" enrolled'); },
+ async fb(id,text){ comment('Omar Haddad',text); log(`webhook page.feed comment from=Omar text="${text}"`); node('trigger','on'); await wait(600); if(!alive(id))return;
+  if(!['info','معلومات'].some(k=>text.toLowerCase().includes(k))){ node('trigger','fail'); log('no trigger matched → ignored'); comment('·',L(T.nomatch),true); return; }
+  node('trigger','done'); node('reply','on'); await wait(600); if(!alive(id))return; comment('yourbrand',L(T.fb_pub)[0],true); node('reply','done'); log('POST /{comment_id}/comments');
+  node('dm','on'); await typing(800); if(!alive(id))return; bubble('bot',L(T.fb_dm1)); quick(L(T.fb_q)); node('dm','done'); log('Messenger private reply + quick_replies · waiting');
+  for(;;){ const [t,i]=await new Promise(r=>waiting=(a,b)=>r([a,b])); if(!alive(id))return; bubble('me',t); node('answer','on'); log(`quick_reply "${t}"`); await typing(700); if(!alive(id))return;
+   bubble('bot',L(T.fb_a)[i], i===2?[{title:L(T.fb_book),url:'https://yourbrand.com/book'}]:null); node('answer','done');
+   if(i===2){ node('tag','on'); await wait(400); node('tag','done'); log('tag "workshop-lead" · notify team: "Omar wants to book"'); return; }
+   await wait(400); bubble('bot',L(T.fb_more)); quick(L(T.fb_q)); } },
+ async wa(id){ $('#adCta').disabled=true; bubble('me',L(T.wa_start)); log('webhook whatsapp messages · referral: ad_id=1203…'); node('trigger','on'); await wait(600); if(!alive(id))return; node('trigger','done');
+  node('ask','on'); await typing(800); if(!alive(id))return; bubble('bot',L(T.wa_1)); chatInput(true,T.ph_wa); log('question: email (validation=email) · waiting');
+  let email; for(;;){ email=await tap(); if(!alive(id))return; bubble('me',email); if(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))break; node('ask','fail'); log(`invalid email "${email}" → retry`); await typing(500); bubble('bot',L(T.wa_bad)); }
+  chatInput(false); node('ask','done'); node('save','on'); await wait(500); node('save','done'); log(`contact.email = ${email} · tags += "ad-lead"`);
+  node('menu','on'); await typing(800); if(!alive(id))return; bubble('bot',L(T.wa_2)); quick(L(T.wa_q)); node('menu','done'); log('interactive message: 3 reply buttons');
+  const [t,i]=await new Promise(r=>waiting=(a,b)=>r([a,b])); if(!alive(id))return; bubble('me',t); node('route','on'); await typing(700); if(!alive(id))return;
+  if(i===2){ bubble('bot',L(T.wa_sales)); log('human_takeover = true · notify sales in inbox'); } else { bubble('bot',L(T.wa_3),[{title:L(T.wa_cat),url:'https://yourbrand.com/catalogue'}]); log(`tag "${i?'fragrance':'skincare'}" · catalogue sent`); } node('route','done'); },
+ async tg(id){ $('#adCta').disabled=true; bubble('me','/start promo26'); log('update message text="/start promo26" → ref=promo26'); node('trigger','on'); await wait(600); if(!alive(id))return; node('trigger','done');
+  node('tag','on'); await wait(400); node('tag','done'); log('tags += "promo-nov" · source saved'); node('menu','on'); await typing(700); if(!alive(id))return; bubble('bot',L(T.tg_1)); quick(L(T.tg_q)); node('menu','done'); log('sendMessage + inline_keyboard');
+  const [t,i]=await new Promise(r=>waiting=(a,b)=>r([a,b])); if(!alive(id))return; bubble('me',t); node('answer','on'); log(`callback_query "${t}"`); await typing(700); if(!alive(id))return;
+  bubble('bot',L(T.tg_a)[i], i===1?[{title:L(T.tg_book),url:'https://cal.com/yourbrand'}]:null); node('answer','done'); node('route','on'); await wait(400); node('route','done'); log(i===2?'human_takeover = true':'done'); },
+ async web(id){ $('#adCta').disabled=true; node('trigger','on'); log('widget opened · visitor v_8f3k…'); await typing(700); if(!alive(id))return; node('trigger','done'); bubble('bot',L(T.web_1)); quick(L(T.web_q)); chatInput(true,T.ph_web);
+  for(;;){ const [t,i]=await new Promise(r=>waiting=(a,b)=>r([a,b])); if(!alive(id))return; bubble('me',t); quick([]);
+   if(i===2 || /^(human|agent|موظف)$/i.test(t.trim())){ node('exit','done'); node('take','on'); log('exit keyword → human_takeover'); await wait(700); bubble('sys',L(T.web_join)); await typing(900); bubble('bot',L(T.web_agent)); node('take','done'); chatInput(false); log('agent replied from the Live Chat inbox'); return; }
+   node('ai','on'); log(`AI request · model=your key · question="${t}"`); await typing(1100); if(!alive(id))return; const ans = i>=0&&i<2 ? L(T.web_ai)[i] : (/(deliver|توصيل|أبوظبي|abu)/i.test(t)?L(T.web_ai)[0]:/(return|إرجاع)/i.test(t)?L(T.web_ai)[1]:L(T.web_ai)[2]);
+   bubble('bot',ans); node('ai','done'); quick(L(T.web_q)); } },
+};
+function setup(){
+  run++; waiting=null; const id=run;
+  document.querySelectorAll('.dtabs button').forEach(b=>{ b.classList.toggle('on',b.dataset.plat===P); b.setAttribute('aria-selected',b.dataset.plat===P); });
+  $('#scen').textContent=L(T.scen[P]); $('#followOpt').style.display=P==='ig'?'':'none';
+  const ph=$('#chatPhone'); ph.className='phone th-'+P; $('#chatTop').innerHTML=`<span>‹</span><div class="av" style="${P==='ig'?'':'background:'+({fb:'#0866ff',wa:'#1fa855',tg:'#229ed9',web:'var(--acc)'})[P]}"></div><span>${chatHeads[P][0]}</span><span style="margin-inline-start:auto;font-size:12px;opacity:.8">${chatHeads[P][1]}</span>`;
+  $('#dm').innerHTML=`<div class="empty-dm" id="dmEmpty">${lang==='ar'?({ig:'علّق على المنشور لتشغيل الأتمتة.',fb:'علّق على المنشور لتشغيل الأتمتة.',wa:'اضغط زر الإعلان لبدء المحادثة.',tg:'اضغط «ابدأ» لفتح البوت.',web:'اضغط فقاعة الدردشة في الموقع.'})[P]:({ig:'Comment on the post to trigger the automation.',fb:'Comment on the post to trigger the automation.',wa:'Tap the ad button to start the chat.',tg:'Tap START to open the bot.',web:'Tap the chat bubble on the website.'})[P]}</div>`;
+  $('#qr').innerHTML=''; chatInput(false);
+  $('#nodes').innerHTML=N[P].map(n=>`<div class="fnode" data-n="${n[0]}"><b>${lang==='ar'?n[2]:n[1]}</b><span>${lang==='ar'?n[4]:n[3]}</span></div>`).join('');
+  $('#log').innerHTML='<div>$ waiting for webhook…</div>';
+  const e=$('#entry'); e.className='phone'+(P==='fb'?' fbpost':'');
+  e.innerHTML = P==='ig'||P==='fb' ? postEntry(P) : P==='web' ? webEntry() : adEntry(P);
+  if(P==='ig'||P==='fb'){ let busy=false;
+    e.querySelectorAll('.chips button').forEach(b=>b.onclick=()=>{ $('#cinput').value=b.dataset.c; $('#cform').requestSubmit(); });
+    $('#cform').onsubmit=async ev=>{ ev.preventDefault(); const t=$('#cinput').value.trim(); if(!t)return; $('#cinput').value='';
+      if(busy){ comment(P==='ig'?'sara.24':'Omar Haddad',t); log('contact already in this flow → no duplicate DM'); return; }
+      const hit=(P==='ig'?['guide','دليل']:['info','معلومات']).some(k=>t.toLowerCase().includes(k)); if(hit){ busy=true; $('#dmEmpty')?.remove(); }
+      await S[P](id,t); }; }
+  else $('#adCta').onclick=()=>{ $('#dmEmpty')?.remove(); S[P](id); };
+}
+$('#chatForm').addEventListener('submit',e=>{ e.preventDefault(); const t=$('#chatInput').value.trim(); if(!t||!waiting)return; $('#chatInput').value=''; const f=waiting; waiting=null; f(t,-1); });
+document.querySelectorAll('.dtabs button').forEach(b=>b.onclick=()=>{ P=b.dataset.plat; setup(); });
+$('#resetBtn').onclick=setup;
+window.LW_DEMO_SETUP=setup;
+setup();
+})();
+
 </script>
 </body>
 </html>
