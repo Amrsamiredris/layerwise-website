@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Layerwise Chat · Instagram & WhatsApp automation without per-contact pricing</title>
+<meta name="description" content="Comment-to-DM, flows, live chat, broadcasts and AI replies for Instagram, WhatsApp, Messenger, Telegram and web chat. Flat price, no contact cap. Arabic and English.">
+<meta property="og:title" content="Layerwise Chat — chat automation with a flat price">
+<meta property="og:description" content="Comment-to-DM, flows, live chat and AI for Instagram, WhatsApp & more. No per-contact pricing.">
+<link rel="icon" href="/favicon.svg">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&display=swap">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;700&display=swap">
+<style>
+:root{--paper:#f3f7f9;--paper-2:#e4edf2;--ink:#0a0a0a;--soft:#3d5260;--sky:#cbe4f2;--sand:#f1e3b5;--sun:#ffc013;--acc:#b0298f;--acc-h:#931f77;--line:#0a0a0a;--ok:#0a7d3b;--m:clamp(16px,3vw,48px);
+  --face:"Cabinet Grotesk","Helvetica Neue",Arial,sans-serif;--ar:"IBM Plex Sans Arabic","Cabinet Grotesk",Tahoma,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--face);font-size:clamp(1.0625rem,1rem + .25vw,1.1875rem);line-height:1.5}
+[dir=rtl] body,[dir=rtl] button,[dir=rtl] input,[dir=rtl] select,[dir=rtl] textarea{font-family:var(--ar)}
+a{color:inherit}button,input,select,textarea{font:inherit;color:inherit}
+.wrap{max-width:1280px;margin:0 auto;padding:0 var(--m)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border:2px solid var(--ink);background:transparent;text-decoration:none;font-weight:700;cursor:pointer}
+.btn-acc{background:var(--acc);border-color:var(--acc);color:#fff}.btn-acc:hover{background:var(--acc-h)}.btn-ink{background:var(--ink);color:#fff}
+/* header */
+header{position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:1px solid #0a0a0a22}
+header .wrap{display:flex;align-items:center;gap:20px;height:72px}
+.word{display:flex;align-items:center;gap:10px;font-weight:800;font-size:24px;text-decoration:none;letter-spacing:-.02em}.word svg{width:34px;height:34px}.word b{color:var(--acc)}
+nav.main{display:flex;gap:22px;margin-inline-start:auto}nav.main a{text-decoration:none;font-weight:500}nav.main a:hover{color:var(--acc)}
+.hdr-r{display:flex;gap:8px;align-items:center}
+.lang{border:2px solid var(--ink);background:#fff;padding:8px 12px;cursor:pointer;font-weight:700}
+@media(max-width:900px){nav.main{display:none}.hide-sm{display:none}}
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);border-bottom:1px solid #0a0a0a22}
+.hero .txt{padding:clamp(40px,7vw,96px) var(--m)}
+.hero h1{overflow-wrap:break-word;font-size:clamp(2.6rem,1.2rem + 5vw,5.6rem);line-height:.95;letter-spacing:-.035em;margin:0 0 24px;font-weight:800}
+[dir=rtl] .hero h1{letter-spacing:0;line-height:1.15}
+.hero h1 em{font-style:normal;color:var(--acc)}
+.lead{font-size:clamp(1.2rem,1.1rem + .5vw,1.5rem);color:var(--soft);max-width:36ch}
+.hero .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.blocks{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:1fr 1fr}
+.blocks>div{display:flex;flex-direction:column;justify-content:flex-end;padding:26px;font-weight:800;border-inline-start:1px solid #0a0a0a22;border-bottom:1px solid #0a0a0a22}.blocks .l{font-size:1.05rem;font-weight:700;margin-top:6px}
+.blocks .n{display:block;font-size:clamp(2.2rem,1.6rem + 2.4vw,4.4rem);line-height:1;letter-spacing:-.03em}
+@media(max-width:900px){.hero{grid-template-columns:minmax(0,1fr)}.hero h1{overflow-wrap:break-word;font-size:clamp(2.1rem,9vw,3rem)}.blocks>div{min-height:140px}}
+section{padding:clamp(56px,8vw,110px) 0;border-bottom:1px solid #0a0a0a22}
+.eyebrow{font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:.85rem;color:var(--acc)}
+[dir=rtl] .eyebrow{letter-spacing:0}
+h2{font-size:clamp(2.1rem,1.4rem + 3vw,3.8rem);line-height:1;letter-spacing:-.03em;margin:8px 0 18px;font-weight:800}
+[dir=rtl] h2{letter-spacing:0;line-height:1.2}
+.sub{color:var(--soft);max-width:60ch;margin:0 0 36px}
+/* demo */
+.demo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1.05fr);gap:22px;align-items:start}
+@media(max-width:1100px){.demo{grid-template-columns:1fr 1fr}.flowcol{grid-column:1/-1}}
+@media(max-width:700px){.demo{grid-template-columns:1fr}}
+.phone{background:#fff;border:10px solid var(--ink);border-radius:38px;overflow:hidden;height:640px;display:flex;flex-direction:column;box-shadow:0 18px 50px #0002}
+.ph-top{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid #eee;font-weight:700;font-size:15px}
+.av{width:32px;height:32px;border-radius:50%;background:linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7);flex:none}
+.av.u{background:linear-gradient(45deg,#7dd3fc,#a78bfa)}
+.post-img{aspect-ratio:1/1;max-height:290px;background:linear-gradient(160deg,var(--sky),var(--sand));display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px;font-weight:800;font-size:28px;flex:none}
+.post-img small{font-size:15px;font-weight:600;color:var(--soft);margin-top:8px}
+.acts{display:flex;gap:14px;padding:10px 14px 2px;font-size:20px}
+.cap{padding:2px 14px 8px;font-size:14px}
+.comments{flex:1;overflow:auto;padding:4px 14px;font-size:14px;display:flex;flex-direction:column;gap:8px}
+.cm{display:flex;gap:8px;align-items:flex-start;animation:pop .25s ease}.cm .av{width:24px;height:24px}
+.cm.reply{margin-inline-start:30px}.cm b{margin-inline-end:4px}.cm .t{color:#8e8e8e;font-size:12px;display:block}
+.cbox{display:flex;gap:8px;padding:10px 12px;border-top:1px solid #eee}
+.cbox input{flex:1;border:1px solid #ddd;border-radius:20px;padding:9px 14px;min-width:0}
+.cbox button{border:0;background:none;color:#0095f6;font-weight:700;cursor:pointer}
+.chips{display:flex;gap:6px;flex-wrap:wrap;padding:0 12px 10px}
+.chips button{border:1px solid #ddd;background:#fafafa;border-radius:20px;padding:4px 10px;font-size:12px;cursor:pointer}
+.dm{flex:1;overflow:auto;padding:14px;display:flex;flex-direction:column;gap:8px;background:#fff}
+.bub{max-width:82%;padding:9px 13px;border-radius:20px;font-size:14px;white-space:pre-wrap;animation:pop .25s ease}
+.bub.bot{align-self:flex-start;background:#efefef}.bub.me{align-self:flex-end;background:#3797f0;color:#fff}
+.bub .bt{display:block;margin-top:8px;background:#fff;border:1px solid #ddd;border-radius:12px;padding:8px;text-align:center;color:#0095f6;font-weight:700;cursor:pointer;width:100%}
+.bub .bt[disabled]{opacity:.5;cursor:default}
+.typing{align-self:flex-start;background:#efefef;border-radius:20px;padding:10px 14px;display:flex;gap:4px}
+.typing i{width:6px;height:6px;border-radius:50%;background:#999;animation:blink 1s infinite}.typing i:nth-child(2){animation-delay:.2s}.typing i:nth-child(3){animation-delay:.4s}
+.empty-dm{margin:auto;text-align:center;color:#8e8e8e;font-size:14px;padding:20px}
+@keyframes pop{from{transform:scale(.9);opacity:0}to{transform:none;opacity:1}}
+@keyframes blink{50%{opacity:.3}}
+.flowcol{background:var(--ink);color:#eaf0f3;padding:18px;min-height:640px;display:flex;flex-direction:column;gap:12px}
+.flowcol h3{margin:0;font-size:18px;display:flex;justify-content:space-between;align-items:center}
+.flowcol h3 small{font-weight:500;color:#a7b6bf;font-size:12px}
+.fnode{border:2px solid #2b3640;padding:10px 12px;position:relative;transition:border-color .3s,background .3s;font-size:14px}
+.fnode b{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:#a7b6bf}
+[dir=rtl] .fnode b{letter-spacing:0}
+.fnode.on{border-color:var(--sun);background:#2a2410}.fnode.done{border-color:var(--ok);background:#0f2418}.fnode.fail{border-color:#e5484d;background:#2a1113}
+.fnode.done::after{content:"✓";position:absolute;inset-inline-end:10px;top:10px;color:#4ade80;font-weight:800}
+.fnode+.fnode::before{content:"";position:absolute;top:-14px;inset-inline-start:22px;width:2px;height:12px;background:#2b3640}
+.log{margin-top:auto;font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#a7b6bf;background:#111a20;padding:10px;max-height:150px;overflow:auto;direction:ltr;text-align:left}
+.log div{animation:pop .2s}
+.opts{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:18px;align-items:center}
+.opts label{display:flex;gap:6px;align-items:center;font-weight:600;cursor:pointer}
+.reset{border:2px solid var(--ink);background:#fff;padding:6px 12px;cursor:pointer;font-weight:700}
+/* features */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));border-top:2px solid var(--ink);border-inline-start:2px solid var(--ink)}
+.cell{border-inline-end:2px solid var(--ink);border-bottom:2px solid var(--ink);padding:26px;background:#fff}
+.cell:nth-child(4n+1){background:var(--sky)}.cell:nth-child(4n+3){background:var(--sand)}
+.cell h3{margin:0 0 6px;font-size:1.35rem}.cell p{margin:0;color:var(--soft);font-size:1rem}
+.chan{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}.chan span{padding:10px 18px;font-weight:800;color:#fff}
+/* compare */
+table{width:100%;border-collapse:collapse;background:#fff;border:2px solid var(--ink)}
+th,td{padding:14px 16px;border-bottom:1px solid #0a0a0a22;text-align:start;vertical-align:top}
+th{background:var(--ink);color:#fff}th.us{background:var(--acc)}td.us{background:#fbeef7;font-weight:600}
+.tbl{overflow-x:auto}
+/* pricing */
+.ptop{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:24px}
+.ptop select{border:2px solid var(--ink);padding:10px 14px;background:#fff;font-weight:700}
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.plan{border:2px solid var(--ink);background:#fff;padding:26px;display:flex;flex-direction:column}
+.plan.hi{background:var(--ink);color:#fff}.plan.hi .muted{color:#b8c3ca}
+.plan h3{margin:0;font-size:1.4rem}.price{font-size:clamp(2.4rem,2rem + 1.4vw,3.4rem);font-weight:800;margin:14px 0 2px;direction:ltr;text-align:start}
+[dir=rtl] .price{text-align:right}
+.price small{font-size:1rem;font-weight:600}.muted{color:var(--soft);font-size:.95rem}
+.plan ul{padding-inline-start:20px;margin:16px 0 22px;flex:1}.plan li{margin:6px 0}
+.badge{display:inline-block;background:var(--sun);color:var(--ink);font-size:.8rem;font-weight:800;padding:3px 8px;margin-inline-start:8px}
+.private{margin-top:22px;display:grid;grid-template-columns:1.3fr 1fr;border:2px solid var(--ink)}
+.private>div{padding:30px}.private>div:first-child{background:var(--sand)}.private>div:last-child{background:#fff}
+@media(max-width:800px){.private{grid-template-columns:1fr}}
+.note{font-size:.9rem;color:var(--soft);margin-top:16px}
+/* faq */
+details.q{border-top:2px solid var(--ink);padding:18px 0}details.q:last-child{border-bottom:2px solid var(--ink)}
+details.q summary{font-weight:800;font-size:1.2rem;cursor:pointer;list-style:none}details.q summary::-webkit-details-marker{display:none}
+details.q summary::after{content:"+";float:right;font-size:1.6rem;line-height:1}[dir=rtl] details.q summary::after{float:left}
+details.q[open] summary::after{content:"–"}details.q p{color:var(--soft);margin:10px 0 0;max-width:75ch}
+/* contact */
+.contact{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px}@media(max-width:900px){.contact{grid-template-columns:1fr}}
+form.cf{position:relative;background:#fff;border:2px solid var(--ink);padding:26px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+form.cf .full{grid-column:1/-1}form.cf label{font-weight:700;font-size:.9rem;display:block;margin-bottom:4px}
+form.cf input,form.cf select,form.cf textarea{width:100%;border:2px solid var(--ink);padding:10px 12px;background:#fff}
+form.cf textarea{min-height:110px;resize:vertical}
+.hp{position:absolute;inset-inline-start:0;bottom:0;width:1px;height:1px;padding:0;border:0;opacity:0;pointer-events:none;overflow:hidden;clip-path:inset(50%)}
+.status{font-weight:700}.status.ok{color:var(--ok)}.status.err{color:#c62828}
+@media(max-width:600px){form.cf{grid-template-columns:1fr}}
+footer{padding:40px 0;color:var(--soft);font-size:.95rem}footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="word" dir="ltr" href="/chat/" aria-label="Layerwise Chat home"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="2" y="26" width="24" height="9" fill="currentColor"/><rect x="8" y="15.5" width="24" height="9" fill="var(--sand)" stroke="currentColor" stroke-width="2"/><rect x="14" y="5" width="24" height="9" fill="var(--acc)"/></svg>layerwise <b>chat</b></a>
+    <nav class="main" aria-label="Main"><a href="#demo" data-i="nav_demo">Live demo</a><a href="#features" data-i="nav_feat">Features</a><a href="#compare" data-i="nav_cmp">vs ManyChat</a><a href="#pricing" data-i="nav_price">Pricing</a><a href="#faq" data-i="nav_faq">FAQ</a></nav>
+    <div class="hdr-r"><button class="lang" id="langBtn" type="button" aria-label="Switch language">عربي</button><a class="btn btn-acc hide-sm" href="#contact" data-i="cta_demo">Book a demo</a></div>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="txt">
+    <div class="eyebrow" data-i="hero_eye">Chat automation · by Layerwise</div>
+    <h1 data-i="hero_h">Turn comments into <em>conversations</em>. Pay a flat price.</h1>
+    <p class="lead" data-i="hero_p">Comment-to-DM, flows, live chat, broadcasts and AI replies for Instagram, WhatsApp, Messenger, Telegram and your website. No per-contact pricing — your bill stays the same when a Reel goes viral.</p>
+    <div class="ctas"><a class="btn btn-acc" href="#demo" data-i="hero_try">Try the live demo ↓</a><a class="btn" href="#pricing" data-i="hero_price">See pricing</a><a class="btn" id="signupBtn" href="#contact" data-i="hero_signup">Start free setup call</a></div>
+  </div>
+  <div class="blocks" aria-hidden="true">
+    <div style="background:var(--sky)"><span class="n">5</span><span class="l" data-i="b_ch">channels</span></div>
+    <div style="background:var(--sun)"><span class="n">0</span><span class="l" data-i="b_fee">per-contact fees</span></div>
+    <div style="background:var(--sand)"><span class="n">9</span><span class="l" data-i="b_steps">flow step types</span></div>
+    <div style="background:var(--acc);color:#fff"><span class="n" dir="ltr">AR+EN</span><span class="l" data-i="b_lang">bilingual</span></div>
+  </div>
+</div>
+
+<!-- DEMO -->
+<section id="demo"><div class="wrap">
+  <div class="eyebrow" data-i="demo_eye">Interactive demo · simulated</div>
+  <h2 data-i="demo_h">Comment on the post. Watch what happens.</h2>
+  <p class="sub" data-i="demo_p">This is a simulation of a real Layerwise Chat automation. Type <b>GUIDE</b> (or دليل) as a comment. You'll see the public reply, the DM your follower receives, and every step the bot runs behind the scenes.</p>
+  <div class="opts"><label><input type="checkbox" id="follows" checked> <span data-i="opt_follow">The commenter follows the account</span></label><button class="reset" id="resetBtn" type="button" data-i="opt_reset">↺ Reset demo</button></div>
+  <div class="demo">
+    <div class="phone" aria-label="Instagram post simulation">
+      <div class="ph-top"><div class="av"></div><span>yourbrand</span><span style="margin-inline-start:auto;color:#8e8e8e">•••</span></div>
+      <div class="post-img"><span data-i="post_title">FREE ROUTE PLANNER ✨</span><small data-i="post_sub">Comment GUIDE to get it in your DMs</small></div>
+      <div class="acts" aria-hidden="true">♡ 💬 ➤</div>
+      <div class="cap"><b>yourbrand</b> <span data-i="post_cap">Comment GUIDE and I'll send you the free planner 👇</span></div>
+      <div class="comments" id="comments" aria-live="polite"></div>
+      <div class="chips"><button type="button" data-c="GUIDE">GUIDE</button><button type="button" data-c="دليل">دليل</button><button type="button" data-c="love this 😍">love this 😍</button></div>
+      <form class="cbox" id="cform"><div class="av u" style="width:28px;height:28px"></div><input id="cinput" maxlength="120" autocomplete="off" placeholder="Add a comment…" data-ph="ph_comment" aria-label="Comment"><button data-i="post_btn">Post</button></form>
+    </div>
+    <div class="phone" aria-label="Direct messages simulation">
+      <div class="ph-top"><span>‹</span><div class="av"></div><span>yourbrand</span><span style="margin-inline-start:auto;font-size:12px;color:#8e8e8e" data-i="dm_label">Your follower's DMs</span></div>
+      <div class="dm" id="dm" aria-live="polite"><div class="empty-dm" id="dmEmpty" data-i="dm_empty">No messages yet.<br>Comment on the post to trigger the automation.</div></div>
+    </div>
+    <div class="flowcol" aria-label="Behind the scenes">
+      <h3><span data-i="bts">Behind the scenes</span><small data-i="bts_sub">what Layerwise Chat runs</small></h3>
+      <div class="fnode" data-n="trigger"><b data-i="n1b">Trigger</b><span data-i="n1">Comment contains “guide” / “دليل” on this post</span></div>
+      <div class="fnode" data-n="reply"><b data-i="n2b">Public reply</b><span data-i="n2">Random reply under the comment</span></div>
+      <div class="fnode" data-n="dm"><b data-i="n3b">Private reply</b><span data-i="n3">DM with a button — waits for the tap</span></div>
+      <div class="fnode" data-n="gate"><b data-i="n4b">Condition</b><span data-i="n4">Follows the account?</span></div>
+      <div class="fnode" data-n="link"><b data-i="n5b">Message</b><span data-i="n5">Send the link</span></div>
+      <div class="fnode" data-n="tag"><b data-i="n6b">Action</b><span data-i="n6">Tag “lead-magnet” · add to CRM · start 3-day sequence</span></div>
+      <div class="log" id="log" aria-live="polite"><div>$ waiting for webhook…</div></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- FEATURES -->
+<section id="features"><div class="wrap">
+  <div class="eyebrow" data-i="f_eye">What's inside</div>
+  <h2 data-i="f_h">Everything creators and brands actually use</h2>
+  <p class="sub" data-i="f_p">The automations that drive results on ManyChat, in one dashboard you can run in Arabic or English.</p>
+  <div class="grid">
+    <div class="cell"><h3 data-i="f1h">Comment → DM</h3><p data-i="f1p">Keyword triggers per post or Reel, random public replies, private reply with a button.</p></div>
+    <div class="cell"><h3 data-i="f2h">Visual flow builder</h3><p data-i="f2p">Drag-and-drop: messages, buttons, questions that save answers, conditions, delays, A/B splits, webhooks.</p></div>
+    <div class="cell"><h3 data-i="f3h">Follow gate</h3><p data-i="f3p">Deliver the freebie only to people who follow you on Instagram.</p></div>
+    <div class="cell"><h3 data-i="f4h">Live chat inbox</h3><p data-i="f4p">Every channel in one inbox. Pause the bot and take over any conversation.</p></div>
+    <div class="cell"><h3 data-i="f5h">AI replies</h3><p data-i="f5p">Answer FAQs from your own knowledge base with OpenAI, OpenRouter, Groq or a local model — your key, no AI markup.</p></div>
+    <div class="cell"><h3 data-i="f6h">Broadcasts & sequences</h3><p data-i="f6p">Segment by tag and channel, schedule, and drip follow-ups over days.</p></div>
+    <div class="cell"><h3 data-i="f7h">Contacts CRM</h3><p data-i="f7p">Tags, custom fields, email and phone capture with validation, CSV export.</p></div>
+    <div class="cell"><h3 data-i="f8h">Integrations & API</h3><p data-i="f8p">Push leads to your CRM, Google Sheets, n8n or Make via webhooks and a REST API.</p></div>
+  </div>
+  <div class="chan"><span style="background:#d6249f">Instagram</span><span style="background:#25d366">WhatsApp</span><span style="background:#0084ff">Messenger</span><span style="background:#229ed9">Telegram</span><span style="background:var(--ink)" data-i="webchat">Web chat</span></div>
+</div></section>
+
+<!-- COMPARE -->
+<section id="compare" style="background:var(--paper-2)"><div class="wrap">
+  <div class="eyebrow" data-i="c_eye">Layerwise Chat vs ManyChat</div>
+  <h2 data-i="c_h">Why switch</h2>
+  <p class="sub" data-i="c_p">ManyChat is the market leader and a strong product. Here is where we're different.</p>
+  <div class="tbl"><table>
+    <thead><tr><th></th><th>ManyChat (2026)</th><th class="us">Layerwise Chat</th></tr></thead>
+    <tbody>
+      <tr><td data-i="r1">How you pay</td><td data-i="r1a">Plan + active contacts. Pro includes 2,500 contacts, then you pay per contact.</td><td class="us" data-i="r1b">Flat monthly price per account. No contact cap.</td></tr>
+      <tr><td data-i="r2">AI</td><td data-i="r2a">Included in Pro and above, with usage limits.</td><td class="us" data-i="r2b">Use your own AI key at cost — or a local model.</td></tr>
+      <tr><td data-i="r3">Language & support</td><td data-i="r3a">English-first, global support.</td><td class="us" data-i="r3b">Arabic & English, local setup and support in the UAE and Egypt.</td></tr>
+      <tr><td data-i="r4">Setup</td><td data-i="r4a">Do it yourself, or hire an agency.</td><td class="us" data-i="r4b">Optional done-for-you setup: we connect your accounts and build your first flows.</td></tr>
+      <tr><td data-i="r5">Own your data</td><td data-i="r5a">Hosted on ManyChat's cloud.</td><td class="us" data-i="r5b">Export anytime. Private plan runs on your own server.</td></tr>
+      <tr><td data-i="r6">Ecosystem</td><td data-i="r6a">Large template library and integrations marketplace.</td><td class="us" data-i="r6b">Core automations + webhooks/API. Smaller ecosystem — we build what you need.</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note" data-i="c_src">ManyChat details from manychat.com/pricing (checked Nov 2026): Free 25 contacts; Essential $14/mo, 250 contacts; Pro $29/mo, 2,500 contacts; Advanced $139/mo, 25,000 contacts — billed annually, extra contacts charged.</p>
+</div></section>
+
+<!-- PRICING -->
+<section id="pricing"><div class="wrap">
+  <div class="ptop"><div><div class="eyebrow" data-i="p_eye">Pricing</div><h2 data-i="p_h" style="margin-bottom:0">Flat price. Local currency.</h2></div>
+    <label><span data-i="p_country" style="display:block;font-weight:700;font-size:.9rem">Your country</span>
+      <select id="market" aria-label="Country">
+        <option value="AE">🇦🇪 UAE — AED</option><option value="SA">🇸🇦 Saudi Arabia — SAR</option><option value="QA">🇶🇦 Qatar — QAR</option><option value="KW">🇰🇼 Kuwait — KWD</option>
+        <option value="EG">🇪🇬 Egypt — EGP</option><option value="US">🇺🇸 USA — USD</option><option value="EU">🇪🇺 Europe — EUR</option><option value="GB">🇬🇧 UK — GBP</option>
+      </select></label></div>
+  <div class="plans">
+    <div class="plan"><h3 data-i="pl1">Starter</h3><div class="price" data-p="starter"></div><div class="muted" data-i="permo">per month · cancel anytime</div>
+      <ul><li data-i="pl1a">1 Instagram or Facebook account + web chat</li><li data-i="pl1b">Comment-to-DM, keywords, welcome & default replies</li><li data-i="pl1c">Flow builder & live inbox</li><li data-i="pl1d">Unlimited contacts</li><li data-i="pl1e">1 team seat</li></ul>
+      <a class="btn" href="#contact" data-plan="Starter" data-i="choose">Choose plan</a></div>
+    <div class="plan hi"><h3><span data-i="pl2">Growth</span><span class="badge" data-i="pop">Most popular</span></h3><div class="price" data-p="growth"></div><div class="muted" data-i="permo">per month · cancel anytime</div>
+      <ul><li data-i="pl2a">All 5 channels incl. WhatsApp & Telegram</li><li data-i="pl2b">AI replies (your key), follow gate</li><li data-i="pl2c">Broadcasts & drip sequences</li><li data-i="pl2d">Webhooks, API, CSV export</li><li data-i="pl2e">3 team seats</li></ul>
+      <a class="btn btn-acc" href="#contact" data-plan="Growth" data-i="choose">Choose plan</a></div>
+    <div class="plan"><h3 data-i="pl3">Agency</h3><div class="price" data-p="agency"></div><div class="muted" data-i="permo">per month · cancel anytime</div>
+      <ul><li data-i="pl3a">Up to 10 client accounts, all Growth features</li><li data-i="pl3b">10 team seats</li><li data-i="pl3c">Your own domain</li><li data-i="pl3d">Priority support (WhatsApp)</li></ul>
+      <a class="btn" href="#contact" data-plan="Agency" data-i="choose">Choose plan</a></div>
+  </div>
+  <p class="note"><b data-i="setup_l">Done-for-you setup (optional, one-time):</b> <span data-p="setup"></span> — <span data-i="setup_d">we connect your Meta/WhatsApp accounts and build your first 3 flows.</span></p>
+  <div class="private">
+    <div><div class="eyebrow" data-i="pv_eye">For agencies & large brands</div><h3 style="font-size:1.8rem;margin:6px 0 10px" data-i="pv_h">Layerwise Chat Private</h3>
+      <p data-i="pv_p">Your own installation on your own server, under your brand. No monthly platform fee to us: you pay once for setup, plus your server costs. Built on an open-source, MIT-licensed core with omnichannel inbox, AI agents and flows.</p></div>
+    <div><div class="muted" data-i="pv_from">Setup from</div><div class="price" data-p="private"></div>
+      <div class="muted"><span data-i="pv_care">Optional care plan (updates, monitoring, support):</span> <b data-p="care" data-suffix="mo"></b></div>
+      <p></p><a class="btn btn-ink" href="#contact" data-plan="Private" data-i="pv_cta">Talk to us</a></div>
+  </div>
+  <p class="note" data-i="p_note">Prices exclude VAT. WhatsApp conversation fees are charged by Meta directly to your WhatsApp Business account. Contacts are unlimited under fair use (no bulk spam).</p>
+</div></section>
+
+<!-- FAQ -->
+<section id="faq"><div class="wrap">
+  <div class="eyebrow" data-i="q_eye">Questions</div><h2 data-i="q_h">Before you ask</h2>
+  <details class="q"><summary data-i="q1">Is this approved by Meta?</summary><p data-i="a1">Layerwise Chat uses Meta's official Instagram, Messenger and WhatsApp Cloud APIs — no passwords, no scraping. Your account must be an Instagram Professional account (Business or Creator).</p></details>
+  <details class="q"><summary data-i="q2">Can I message anyone, anytime?</summary><p data-i="a2">No tool can. Meta allows free-form messages within 24 hours of a person's last message. Broadcasts automatically skip people outside that window. WhatsApp messages outside the window need approved templates.</p></details>
+  <details class="q"><summary data-i="q3">How fast can I go live?</summary><p data-i="a3">Web chat and Telegram: same day. Instagram and Messenger: usually 1–3 days. WhatsApp depends on Meta's business verification.</p></details>
+  <details class="q"><summary data-i="q4">What happens to my contacts if I leave?</summary><p data-i="a4">You export them as CSV at any time. They're your contacts.</p></details>
+  <details class="q"><summary data-i="q5">Do you support Arabic?</summary><p data-i="a5">Yes — flows, keyword matching (Arabic and English keywords on the same trigger), AI replies and the web chat widget all work in Arabic.</p></details>
+</div></section>
+
+<!-- CONTACT -->
+<section id="contact"><div class="wrap contact">
+  <div><div class="eyebrow" data-i="ct_eye">Book a demo</div><h2 data-i="ct_h">See it on your own Instagram</h2>
+    <p class="sub" data-i="ct_p">Tell us about your account. We'll reply within one working day with a demo slot and a setup plan.</p></div>
+  <form class="cf" id="cf" novalidate>
+    <div><label for="f_name" data-i="l_name">Name</label><input id="f_name" name="name" required autocomplete="name"></div>
+    <div><label for="f_email" data-i="l_email">Email</label><input id="f_email" name="email" type="email" required autocomplete="email"></div>
+    <div><label for="f_phone" data-i="l_phone">WhatsApp / phone</label><input id="f_phone" name="phone" type="tel" autocomplete="tel"></div>
+    <div><label for="f_company" data-i="l_company">Company / Instagram handle</label><input id="f_company" name="company"></div>
+    <div><label for="f_plan" data-i="l_plan">Interested in</label><select id="f_plan" name="plan"><option>Starter</option><option selected>Growth</option><option>Agency</option><option>Private</option><option data-i="o_unsure">Not sure yet</option></select></div>
+    <div><label for="f_country" data-i="l_country">Country</label><input id="f_country" name="country" readonly></div>
+    <div class="full"><label for="f_msg" data-i="l_msg">What do you want to automate?</label><textarea id="f_msg" name="message"></textarea></div>
+    <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="full" style="display:flex;gap:14px;align-items:center;flex-wrap:wrap"><button class="btn btn-acc" type="submit" data-i="send">Send request</button><span class="status" id="status" role="status"></span></div>
+  </form>
+</div></section>
+</main>
+
+<footer><div class="wrap"><span>© <span id="yr"></span> Layerwise · <a href="/" data-i="ft_main">Layerwise AI services</a></span><span data-i="ft_r">Abu Dhabi · Cairo</span></div></footer>
+
+<script>
+// ---------- config ----------
+const CONTACT_ENDPOINT = 'https://formsubmit.co/ajax/amrsamiredris@gmail.com'; // swap for the platform's /api/leads when live
+const APP_SIGNUP_URL = ''; // set to the platform sign-up URL (e.g. https://app.layerwise.ai/signup) to send sign-ups straight in
+const PRICES = {"AE":{"c":"AED","s":"AED ","starter":69,"growth":179,"agency":549,"setup":1099,"private":10500,"care":899},"SA":{"c":"SAR","s":"SAR ","starter":69,"growth":179,"agency":549,"setup":1099,"private":10900,"care":929},"QA":{"c":"QAR","s":"QAR ","starter":69,"growth":179,"agency":549,"setup":1099,"private":10500,"care":899},"KW":{"c":"KWD","s":"KWD ","starter":5.9,"growth":14.9,"agency":45,"setup":89,"private":890,"care":75},"EG":{"c":"EGP","s":"EGP ","starter":449,"growth":1199,"agency":3699,"setup":6999,"private":69000,"care":5999},"US":{"c":"USD","s":"$","starter":19,"growth":49,"agency":149,"setup":299,"private":2900,"care":249},"EU":{"c":"EUR","s":"€","starter":18,"growth":45,"agency":139,"setup":279,"private":2700,"care":229},"GB":{"c":"GBP","s":"£","starter":15,"growth":39,"agency":119,"setup":239,"private":2300,"care":199}};
+const AR_CUR = {AED:'د.إ ',SAR:'ر.س ',QAR:'ر.ق ',KWD:'د.ك ',EGP:'ج.م '};
+
+// ---------- Arabic copy (English lives in the HTML) ----------
+const AR = {
+ nav_demo:'جرّب العرض',nav_feat:'المزايا',nav_cmp:'مقارنة بـ ManyChat',nav_price:'الأسعار',nav_faq:'أسئلة',cta_demo:'احجز عرضاً',
+ hero_eye:'أتمتة المحادثات · من Layerwise',hero_h:'حوّل التعليقات إلى <em>محادثات</em>. بسعر ثابت.',
+ hero_p:'رسائل تلقائية من التعليقات، مسارات محادثة، دردشة مباشرة، رسائل جماعية وردود ذكاء اصطناعي لإنستغرام وواتساب وماسنجر وتيليجرام وموقعك. بدون تسعير لكل جهة اتصال — فاتورتك لا تتغير عندما ينتشر الريل.',
+ hero_try:'جرّب العرض التفاعلي ↓',hero_price:'شاهد الأسعار',hero_signup:'احجز مكالمة إعداد مجانية',b_ch:'قنوات',b_fee:'رسوم لكل جهة اتصال',b_steps:'أنواع خطوات',b_lang:'ثنائي اللغة',
+ demo_eye:'عرض تفاعلي · محاكاة',demo_h:'علّق على المنشور. وشاهد ما يحدث.',
+ demo_p:'هذه محاكاة لأتمتة حقيقية في Layerwise Chat. اكتب <b>دليل</b> (أو GUIDE) كتعليق، وسترى الرد العام، والرسالة الخاصة التي تصل لمتابعك، وكل خطوة ينفذها البوت خلف الكواليس.',
+ opt_follow:'المعلِّق يتابع الحساب',opt_reset:'↺ إعادة العرض',post_title:'مخطط الرحلات المجاني ✨',post_sub:'علّق «دليل» لتصلك في الرسائل',post_cap:'علّق «دليل» وسأرسل لك المخطط مجاناً 👇',ph_comment:'أضف تعليقاً…',post_btn:'نشر',
+ dm_label:'رسائل متابعك',dm_empty:'لا توجد رسائل بعد.<br>علّق على المنشور لتشغيل الأتمتة.',bts:'خلف الكواليس',bts_sub:'ما ينفذه Layerwise Chat',
+ n1b:'المُحفِّز',n1:'التعليق يحتوي «دليل» / «guide» على هذا المنشور',n2b:'رد عام',n2:'رد عشوائي تحت التعليق',n3b:'رد خاص',n3:'رسالة بزر — تنتظر الضغط',n4b:'شرط',n4:'هل يتابع الحساب؟',n5b:'رسالة',n5:'إرسال الرابط',n6b:'إجراء',n6:'وسم «lead-magnet» · إضافة للعملاء · بدء تسلسل 3 أيام',
+ f_eye:'ماذا بالداخل',f_h:'كل ما يستخدمه صناع المحتوى والعلامات فعلاً',f_p:'الأتمتة التي تحقق النتائج على ManyChat، في لوحة واحدة بالعربية أو الإنجليزية.',
+ f1h:'تعليق ← رسالة',f1p:'كلمات مفتاحية لكل منشور أو ريل، ردود عامة عشوائية، ورد خاص بزر.',f2h:'منشئ مسارات مرئي',f2p:'سحب وإفلات: رسائل، أزرار، أسئلة تحفظ الإجابات، شروط، تأخير، اختبار A/B، ويب هوك.',
+ f3h:'شرط المتابعة',f3p:'سلّم الهدية فقط لمن يتابعك على إنستغرام.',f4h:'صندوق دردشة مباشر',f4p:'كل القنوات في صندوق واحد. أوقف البوت وتولَّ أي محادثة.',
+ f5h:'ردود ذكاء اصطناعي',f5p:'أجب عن الأسئلة من قاعدة معرفتك عبر OpenAI أو OpenRouter أو Groq أو نموذج محلي — بمفتاحك، بدون هامش.',f6h:'رسائل جماعية وتسلسلات',f6p:'قسّم حسب الوسوم والقناة، جدول الإرسال، وتابع العملاء على أيام.',
+ f7h:'قاعدة عملاء',f7p:'وسوم، حقول مخصصة، جمع البريد والهاتف مع التحقق، وتصدير CSV.',f8h:'تكاملات و API',f8p:'أرسل العملاء المحتملين إلى CRM أو Google Sheets أو n8n أو Make عبر ويب هوك و REST API.',webchat:'دردشة الموقع',
+ c_eye:'Layerwise Chat مقابل ManyChat',c_h:'لماذا تنتقل',c_p:'ManyChat منتج قوي ورائد في السوق. هنا نختلف:',
+ r1:'طريقة الدفع',r1a:'خطة + جهات اتصال نشطة. Pro تشمل 2,500 جهة ثم تدفع لكل جهة.',r1b:'سعر شهري ثابت لكل حساب. بلا حد لجهات الاتصال.',
+ r2:'الذكاء الاصطناعي',r2a:'ضمن Pro وما فوق، مع حدود استخدام.',r2b:'استخدم مفتاحك بسعر التكلفة — أو نموذجاً محلياً.',
+ r3:'اللغة والدعم',r3a:'الإنجليزية أولاً، دعم عالمي.',r3b:'عربي وإنجليزي، إعداد ودعم محلي في الإمارات ومصر.',
+ r4:'الإعداد',r4a:'بنفسك، أو عبر وكالة.',r4b:'إعداد اختياري كامل: نربط حساباتك ونبني أول المسارات.',
+ r5:'ملكية البيانات',r5a:'على سحابة ManyChat.',r5b:'صدّر في أي وقت. خطة Private تعمل على خادمك.',
+ r6:'المنظومة',r6a:'مكتبة قوالب وسوق تكاملات كبيرة.',r6b:'الأتمتة الأساسية + ويب هوك/API. منظومة أصغر — ونبني ما تحتاجه.',
+ c_src:'بيانات ManyChat من manychat.com/pricing (نوفمبر 2026): المجانية 25 جهة؛ Essential ‏14$ شهرياً 250 جهة؛ Pro ‏29$ شهرياً 2,500 جهة؛ Advanced ‏139$ شهرياً 25,000 جهة — بفوترة سنوية، وجهات الاتصال الإضافية مدفوعة.',
+ p_eye:'الأسعار',p_h:'سعر ثابت. بعملتك المحلية.',p_country:'بلدك',pl1:'Starter',pl2:'Growth',pl3:'Agency',permo:'شهرياً · إلغاء في أي وقت',pop:'الأكثر طلباً',choose:'اختر الخطة',
+ pl1a:'حساب إنستغرام أو فيسبوك + دردشة الموقع',pl1b:'تعليق ← رسالة، كلمات مفتاحية، رسائل ترحيب وافتراضية',pl1c:'منشئ المسارات وصندوق الدردشة',pl1d:'جهات اتصال غير محدودة',pl1e:'مستخدم واحد',
+ pl2a:'القنوات الخمس شاملة واتساب وتيليجرام',pl2b:'ردود ذكاء اصطناعي (بمفتاحك)، شرط المتابعة',pl2c:'رسائل جماعية وتسلسلات',pl2d:'ويب هوك، API، تصدير CSV',pl2e:'3 مستخدمين',
+ pl3a:'حتى 10 حسابات عملاء بكل مزايا Growth',pl3b:'10 مستخدمين',pl3c:'نطاقك الخاص',pl3d:'دعم أولوية (واتساب)',
+ setup_l:'إعداد كامل (اختياري، مرة واحدة):',setup_d:'نربط حسابات Meta وواتساب ونبني أول 3 مسارات.',
+ pv_eye:'للوكالات والعلامات الكبيرة',pv_h:'Layerwise Chat Private',pv_p:'نسختك الخاصة على خادمك وتحت علامتك. بلا رسوم منصة شهرية لنا: تدفع مرة واحدة للإعداد، وتكاليف خادمك. مبنية على نواة مفتوحة المصدر برخصة MIT مع صندوق متعدد القنوات ووكلاء ذكاء اصطناعي ومسارات.',
+ pv_from:'الإعداد يبدأ من',pv_care:'خطة رعاية اختيارية (تحديثات، مراقبة، دعم):',pv_cta:'تحدث معنا',
+ p_note:'الأسعار لا تشمل ضريبة القيمة المضافة. رسوم محادثات واتساب تحاسبها Meta مباشرة على حسابك. جهات الاتصال غير محدودة ضمن الاستخدام العادل (بدون رسائل مزعجة جماعية).',
+ q_eye:'أسئلة',q_h:'قبل أن تسأل',q1:'هل هذا معتمد من Meta؟',a1:'يستخدم Layerwise Chat واجهات Meta الرسمية لإنستغرام وماسنجر وواتساب — بلا كلمات مرور ولا سحب بيانات. يجب أن يكون حساب إنستغرام احترافياً (أعمال أو صانع محتوى).',
+ q2:'هل أستطيع مراسلة أي شخص في أي وقت؟',a2:'لا توجد أداة تستطيع ذلك. تسمح Meta بالرسائل الحرة خلال 24 ساعة من آخر رسالة للشخص. الرسائل الجماعية تتخطى تلقائياً من هم خارج هذه النافذة. واتساب خارج النافذة يحتاج قوالب معتمدة.',
+ q3:'متى أبدأ؟',a3:'دردشة الموقع وتيليجرام: في نفس اليوم. إنستغرام وماسنجر: عادة 1–3 أيام. واتساب حسب توثيق Meta للنشاط التجاري.',
+ q4:'ماذا يحدث لجهات الاتصال إذا غادرت؟',a4:'تصدّرها CSV في أي وقت. إنها جهات اتصالك.',q5:'هل تدعمون العربية؟',a5:'نعم — المسارات، ومطابقة الكلمات المفتاحية (عربي وإنجليزي على نفس المحفز)، وردود الذكاء الاصطناعي، وأداة دردشة الموقع كلها تعمل بالعربية.',
+ ct_eye:'احجز عرضاً',ct_h:'شاهده على حسابك',ct_p:'أخبرنا عن حسابك. سنرد خلال يوم عمل بموعد للعرض وخطة إعداد.',
+ l_name:'الاسم',l_email:'البريد الإلكتروني',l_phone:'واتساب / هاتف',l_company:'الشركة / حساب إنستغرام',l_plan:'مهتم بـ',l_country:'الدولة',l_msg:'ماذا تريد أن تؤتمت؟',o_unsure:'لم أقرر بعد',send:'أرسل الطلب',
+ ft_main:'خدمات Layerwise للذكاء الاصطناعي',ft_r:'أبوظبي · القاهرة'
+};
+const MSG = {
+ en:{public:['Sent! Check your DMs 📩','Done ✅ check your inbox','On its way to your DMs 🚀'],dm1:n=>`Hey ${n}! 👋 Thanks for the comment. Tap below and I'll send you the planner.`,btn:'Send me the planner',dm2:'Here you go 🎁',link:'Open the planner ↗',
+   notf:"This one is for followers only 🙏 Follow @yourbrand, then tap below.",retry:"I'm following ✅",nomatch:'No trigger matched — the bot stays quiet. Try “GUIDE”.',typing:'',now:'now',seq:'Day 1 follow-up scheduled ⏰'},
+ ar:{public:['تم الإرسال! شوف رسائلك 📩','تم ✅ راجع الخاص','في الطريق لرسائلك 🚀'],dm1:n=>`أهلاً ${n}! 👋 شكراً على التعليق. اضغط بالأسفل وسأرسل لك المخطط.`,btn:'أرسل لي المخطط',dm2:'تفضل 🎁',link:'افتح المخطط ↗',
+   notf:'هذا المحتوى للمتابعين فقط 🙏 تابع ‎@yourbrand ثم اضغط بالأسفل.',retry:'تابعت ✅',nomatch:'لا يوجد محفز مطابق — البوت لا يرد. جرّب «دليل».',now:'الآن',seq:'تمت جدولة متابعة اليوم الأول ⏰'}
+};
+
+// ---------- i18n ----------
+const EN = {}; document.querySelectorAll('[data-i]').forEach(el => EN[el.dataset.i] = el.innerHTML);
+let lang = (new URLSearchParams(location.search).get('lang')) || (function(){try{return localStorage.getItem('lw_lang')}catch(e){return null}})() || ((navigator.language||'').toLowerCase().startsWith('ar') ? 'ar' : 'en');
+function applyLang(){
+  document.documentElement.lang = lang; document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  document.querySelectorAll('[data-i]').forEach(el => { const k = el.dataset.i; el.innerHTML = lang === 'ar' && AR[k] ? AR[k] : EN[k]; });
+  document.querySelectorAll('[data-ph]').forEach(el => el.placeholder = lang === 'ar' ? AR[el.dataset.ph] : 'Add a comment…');
+  document.getElementById('langBtn').textContent = lang === 'ar' ? 'English' : 'عربي';
+  document.title = lang === 'ar' ? 'Layerwise Chat · أتمتة إنستغرام وواتساب بدون تسعير لكل جهة اتصال' : 'Layerwise Chat · Instagram & WhatsApp automation without per-contact pricing';
+  renderPrices(); try{localStorage.setItem('lw_lang',lang)}catch(e){}
+}
+document.getElementById('langBtn').onclick = () => { lang = lang === 'ar' ? 'en' : 'ar'; applyLang(); };
+
+// ---------- pricing localization ----------
+function detectMarket(){
+  try{ const saved = localStorage.getItem('lw_market'); if (saved && PRICES[saved]) return saved; }catch(e){}
+  const tz = (Intl.DateTimeFormat().resolvedOptions().timeZone||'');
+  const map = {'Asia/Dubai':'AE','Asia/Muscat':'AE','Asia/Riyadh':'SA','Asia/Qatar':'QA','Asia/Kuwait':'KW','Asia/Bahrain':'SA','Africa/Cairo':'EG','Europe/London':'GB'};
+  if (map[tz]) return map[tz];
+  if (tz.startsWith('Europe/')) return 'EU';
+  return 'US';
+}
+const sel = document.getElementById('market'); sel.value = detectMarket();
+sel.onchange = () => { try{localStorage.setItem('lw_market', sel.value)}catch(e){} renderPrices(); };
+function fmt(n, m){ const p = PRICES[m]; const num = Number(n).toLocaleString(lang==='ar'?'en-US':'en-US', {maximumFractionDigits: n % 1 ? 1 : 0});
+  const sym = lang === 'ar' && AR_CUR[p.c] ? AR_CUR[p.c] : p.s; return sym + num; }
+function renderPrices(){
+  const m = sel.value;
+  document.querySelectorAll('[data-p]').forEach(el => { const k = el.dataset.p; let v = fmt(PRICES[m][k], m);
+    if (el.dataset.suffix) v += lang === 'ar' ? ' شهرياً' : '/mo';
+    el.innerHTML = ['starter','growth','agency'].includes(k) ? v + `<small>${lang === 'ar' ? ' /شهر' : ' /mo'}</small>` : v; });
+  document.getElementById('f_country').value = sel.options[sel.selectedIndex].text.replace(/^\S+\s/, '');
+}
+
+// ---------- plan buttons prefill form / signup ----------
+document.querySelectorAll('[data-plan]').forEach(a => a.addEventListener('click', () => { document.getElementById('f_plan').value = a.dataset.plan; }));
+if (APP_SIGNUP_URL) document.getElementById('signupBtn').href = APP_SIGNUP_URL;
+
+// ---------- contact form ----------
+document.getElementById('cf').addEventListener('submit', async e => {
+  e.preventDefault(); const f = e.target; const st = document.getElementById('status');
+  const data = Object.fromEntries(new FormData(f));
+  if (data._honey) return;
+  if (!data.name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email || '')) { st.className = 'status err'; st.textContent = lang === 'ar' ? 'يرجى إدخال الاسم وبريد صحيح.' : 'Please enter your name and a valid email.'; return; }
+  st.className = 'status'; st.textContent = lang === 'ar' ? 'جارٍ الإرسال…' : 'Sending…';
+  try {
+    const r = await fetch(CONTACT_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({ ...data, _subject: `Layerwise Chat lead: ${data.name} (${data.plan})`, _template: 'table', _captcha: 'false', source: 'layerwise chat website', language: lang, market: sel.value }) });
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok || j.success === 'false' || j.success === false) throw new Error(j.message || r.statusText);
+    f.reset(); renderPrices(); st.className = 'status ok'; st.textContent = lang === 'ar' ? 'تم الإرسال ✅ سنتواصل معك قريباً.' : 'Sent ✅ We will get back to you within one working day.';
+  } catch (err) { st.className = 'status err'; st.textContent = (lang === 'ar' ? 'تعذر الإرسال. راسلنا على ' : 'Could not send. Email us at ') + 'amrsamiredris@gmail.com'; }
+});
+
+// ---------- interactive demo (simulation only — no messages are sent) ----------
+const $ = s => document.querySelector(s);
+const wait = ms => new Promise(r => setTimeout(r, ms));
+let running = false, waitingTap = null, runId = 0;
+const KEYWORDS = ['guide','دليل'];
+const now = () => new Date().toLocaleTimeString('en-GB');
+function log(t){ const d = document.createElement('div'); d.textContent = `[${now()}] ${t}`; $('#log').appendChild(d); $('#log').scrollTop = 1e9; }
+function node(n, cls){ const el = document.querySelector(`.fnode[data-n="${n}"]`); el.classList.remove('on','done','fail'); if (cls) el.classList.add(cls); }
+function addComment(user, text, reply){ const d = document.createElement('div'); d.className = 'cm' + (reply ? ' reply' : '');
+  d.innerHTML = `<div class="av ${reply?'':'u'}"></div><div><b></b><span></span><span class="t">${MSG[lang].now}</span></div>`; d.querySelector('b').textContent = user; d.querySelector('span').textContent = text;
+  $('#comments').appendChild(d); $('#comments').scrollTop = 1e9; }
+function bubble(cls, text, btn){ $('#dmEmpty')?.remove(); const d = document.createElement('div'); d.className = 'bub ' + cls; d.textContent = text;
+  if (btn){ const b = document.createElement('button'); b.className = 'bt'; b.type = 'button'; b.textContent = btn.title; if (btn.url) b.onclick = () => log('→ opens https://yourbrand.com/planner'); else b.onclick = () => { if (waitingTap) { b.disabled = true; const f = waitingTap; waitingTap = null; f(btn.title); } }; d.appendChild(b); }
+  $('#dm').appendChild(d); $('#dm').scrollTop = 1e9; return d; }
+async function typing(ms){ const t = document.createElement('div'); t.className = 'typing'; t.innerHTML = '<i></i><i></i><i></i>'; $('#dm').appendChild(t); $('#dm').scrollTop = 1e9; await wait(ms); t.remove(); }
+function resetDemo(){ runId++; running = false; waitingTap = null; $('#comments').innerHTML = ''; $('#dm').innerHTML = `<div class="empty-dm" id="dmEmpty">${lang==='ar'?AR.dm_empty:EN.dm_empty}</div>`;
+  document.querySelectorAll('.fnode').forEach(n => n.classList.remove('on','done','fail')); $('#log').innerHTML = '<div>$ waiting for webhook…</div>'; }
+$('#resetBtn').onclick = resetDemo;
+document.querySelectorAll('.chips button').forEach(b => b.onclick = () => { $('#cinput').value = b.dataset.c; $('#cform').requestSubmit(); });
+$('#cform').addEventListener('submit', async e => {
+  e.preventDefault(); const text = $('#cinput').value.trim(); if (!text) return; $('#cinput').value = '';
+  const my = ++runId; const M = MSG[lang]; const alive = () => my === runId;
+  addComment('sara.24', text); log(`webhook: instagram.comments  from=sara.24  text="${text}"`);
+  node('trigger','on'); await wait(600); if (!alive()) return;
+  const hit = KEYWORDS.some(k => text.toLowerCase().includes(k));
+  if (!hit) { node('trigger','fail'); log('no trigger matched → ignored'); addComment('·', M.nomatch, true); return; }
+  if (running) { log('contact already in this flow → skipped (no duplicate DMs)'); node('trigger','done'); return; }
+  running = true; node('trigger','done'); log('trigger matched: "Comment → DM (follow gate)" priority=10');
+  node('reply','on'); await wait(700); if (!alive()) return;
+  const pr = M.public[Math.floor(Math.random()*M.public.length)]; addComment('yourbrand', pr, true); node('reply','done'); log(`POST /{comment_id}/replies  "${pr}"`);
+  node('dm','on'); await typing(900); if (!alive()) return;
+  bubble('bot', M.dm1(lang === 'ar' ? 'سارة' : 'Sara'), { title: M.btn }); log('POST /me/messages recipient={comment_id} (private reply)'); log('state: waiting for button tap…');
+  const ask = async () => {
+    const title = await new Promise(r => waitingTap = r); if (!alive()) return;
+    bubble('me', title); node('dm','done'); log(`postback: "${title}"`);
+    node('gate','on'); await wait(800); if (!alive()) return;
+    const follows = $('#follows').checked; log(`GET /{igsid}?fields=is_user_follow_business → ${follows}`);
+    if (!follows) { node('gate','fail'); await typing(700); if (!alive()) return; bubble('bot', M.notf, { title: M.retry }); log('branch: NO → follow prompt, waiting…');
+      const t2 = await new Promise(r => waitingTap = r); if (!alive()) return; bubble('me', t2); log(`postback: "${t2}"`); node('gate','on'); await wait(800); if (!alive()) return;
+      const f2 = $('#follows').checked; log(`GET /{igsid}?fields=is_user_follow_business → ${f2}`);
+      if (!f2) { node('gate','fail'); bubble('bot', M.notf, { title: M.retry }); log('still not following (tick the checkbox above to simulate a follow)');
+        return ask2(); }
+    }
+    return deliver();
+  };
+  const ask2 = async () => { const t = await new Promise(r => waitingTap = r); if (!alive()) return; bubble('me', t); node('gate','on'); await wait(700); if (!alive()) return;
+    const f = $('#follows').checked; log(`GET /{igsid}?fields=is_user_follow_business → ${f}`); if (!f) { node('gate','fail'); bubble('bot', M.notf, { title: M.retry }); return ask2(); } return deliver(); };
+  const deliver = async () => {
+    node('gate','done'); log('branch: YES'); node('link','on'); await typing(800); if (!alive()) return;
+    bubble('bot', M.dm2, { title: M.link, url: true }); node('link','done'); log('message sent: link button');
+    node('tag','on'); await wait(700); if (!alive()) return; node('tag','done');
+    log('contact.tags += "lead-magnet"'); log('sequence "Lead nurture (3 days)" → enrolled'); log(M.seq); running = false;
+  };
+  ask();
+});
+
+document.getElementById('yr').textContent = new Date().getFullYear();
+applyLang();
+</script>
+</body>
+</html>
